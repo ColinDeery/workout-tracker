@@ -1,0 +1,2 @@
+DROP DATABASE IF IT EXISTS workout_db
+CREATE DATABASE workout_db
