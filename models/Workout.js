@@ -28,8 +28,9 @@ Workout.init(
             type: DataTypes.DECIMAL,
             allowNull: false
         },
+        // look into this!
         date: {
-            type: DataTypes.DATE,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         user_id: {
