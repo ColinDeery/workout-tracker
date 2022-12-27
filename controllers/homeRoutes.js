@@ -4,12 +4,14 @@ const { User, Workout } = require('../models');
 
 // router.get('/'), render login page
 router.get('/', async (req, res) => {
-    res.json('Hello World');
+
 });
 
 // router.get('/calendar'), render calendar
 
 // router.get('/day/id'), render day (id = date)
-
+router.get('/day/:id', async (req, res) => {
+    res.render("day")
+});
 
 module.exports = router;
