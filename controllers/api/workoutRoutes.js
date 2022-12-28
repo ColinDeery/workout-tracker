@@ -16,26 +16,51 @@ router.post('/', async (req, res) => {
     }
 });
 
-// // Delete user's workout with same ID
-// router.delete('workout/:id', withAuth, async (req, res) => {
-//     try {
-//         const workoutData = await Workout.destroy({
-//             where: {
-//                 id: req.params.id,
-//                 user_id: req.session.userId
-//             }
-//         });
+// At /api/workout/:id, delete user's workout with same ID
+router.delete('/:id', async (req, res) => {
+    try {
+        const workoutData = await Workout.destroy({
+            where: {
+                id: req.params.id
+            }
+        });
 
-//         if (!workoutData) {
-//             res.status(404).json({ message: 'No workout found with this ID!'});
-//             return;
-//         }
+        if (!workoutData) {
+            res.status(404).json({ message: 'No workout found with this ID!'});
+            return;
+        }
 
-//         res.status(200).json(workoutData);
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json(err);
-//     }
-// });
+        res.status(200).json(workoutData);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
+// At /api/workout/:id, update user's workout with same ID
+router.put('/:id', async (req, res) => {
+    console.log('\n Reached /api/workout/:id');
+    
+    try {
+        const workoutData = await Workout.update(
+            req.body,
+            {
+                where: {
+                    id: req.params.id
+                }
+            }
+        );
+
+        if (!workoutData) {
+            res.status(404).json({ message: 'No workout found with this ID!'});
+            return;
+        }
+
+        res.status(200).json(workoutData);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;

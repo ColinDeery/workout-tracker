@@ -1,9 +1,15 @@
 {{!-- Create card for each workout --}}
 {{#each workouts as |workout|}}
 
-<section class="card">
-    <section class="card-header">
-        <p>{{workout.category}}</p>
+<section class="card" id="workout-{{workout.id}}">
+    <section class="card-header d-flex flex-row justify-content-between">
+        <section>
+            <p>{{workout.category}} {{#if workout.exercise}} - {{workout.exercise}} {{/if}}</p>
+        </section>
+        <section>
+            <i class="fa-solid fa-pen-to-square mx-3"></i>
+            <i class="fa-solid fa-square-minus"></i>
+        </section>
     </section>
 
     <section class="card-body">
@@ -13,9 +19,9 @@
             <li>Type: {{workout.type}}</li>
             {{/if}}
 
-            {{#if workout.exercise}}
+            {{!-- {{#if workout.exercise}}
             <li>Exercise: {{workout.exercise}}</li>
-            {{/if}}
+            {{/if}} --}}
 
             {{#if workout.duration}}
             <li>Duration: {{workout.duration}}</li>
@@ -45,3 +51,5 @@
 </section>
 
 {{/each}}
+
+<script src="../../js/edit-workout.js"></script>

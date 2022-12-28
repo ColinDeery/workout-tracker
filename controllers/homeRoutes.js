@@ -22,7 +22,22 @@ router.get('/day', async (req, res) => {
 
 router.get('/day/workout', async (req, res) => {
     res.render('add-workout-form');
-})
+});
+
+// At /day/workout/:id, show form to edit workout
+router.get('/day/workout/:id', async (req, res) => {
+    try {
+        const workoutData = await Workout.findByPk(req.params.id);
+
+        console.log(workoutData);
+
+        const workout = workoutData.get({ plain: true });
+
+        res.render('edit-workout', { workout });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 module.exports = router;
