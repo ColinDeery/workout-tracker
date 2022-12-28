@@ -4,11 +4,13 @@
     </section>
     <section class="day-view-body">
         <article id="add-workout-button">
-            <button>Add Workout</button>
+            <button id="add-workout">Add Workout</button>
         </article>
         <section class="workout-day-view-sections">
             <article class="todays-workout">
-                <p>Insert Todays Workout here</p>
+                <section class="d-flex flex-column col-8">
+                    {{> workout-info}}
+                </section>
             </article>
             <article class="previous-workout">
                 <p>Insert previous Workouts here</p>

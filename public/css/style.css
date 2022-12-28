@@ -54,7 +54,6 @@
     display: flex;
     flex-direction: column;
 }
-
 .week-view-header {
     background-color: #0073FF;
     padding: 1%;
