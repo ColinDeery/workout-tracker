@@ -1,0 +1,47 @@
+{{!-- Create card for each workout --}}
+{{#each workouts as |workout|}}
+
+<section class="card">
+    <section class="card-header">
+        <p>{{workout.category}}</p>
+    </section>
+
+    <section class="card-body">
+        <ul>
+            {{!-- If property not null, then display info on card --}}
+            {{#if workout.type}}
+            <li>Type: {{workout.type}}</li>
+            {{/if}}
+
+            {{#if workout.exercise}}
+            <li>Exercise: {{workout.exercise}}</li>
+            {{/if}}
+
+            {{#if workout.duration}}
+            <li>Duration: {{workout.duration}}</li>
+            {{/if}}
+            
+            {{#if workout.distance}}
+            <li>Distance: {{workout.distance}}</li>
+            {{/if}}
+
+            {{#if workout.sets}}
+            <li>Number of Sets: {{workout.sets}}</li>
+            {{/if}}
+
+            {{#if workout.reps}}
+            <li>Number of Reps/set: {{workout.reps}}</li>
+            {{/if}}
+
+            {{#if workout.weight}}
+            <li>Weight &#40;lbs&#41;: {{workout.weight}}</li>
+            {{/if}}
+
+            {{#if workout.notes}}
+            <li>Notes: {{workout.notes}}</li>
+            {{/if}}
+        </ul>
+    </section>
+</section>
+
+{{/each}}
