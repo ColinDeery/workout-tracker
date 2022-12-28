@@ -10,7 +10,7 @@ console.log(apiKey);
 
 
 // form getter function at the very end will call fetchApi("Musclegroupname")
-var type = 'cardio';
+var type = 'strength';
 function fetchApi() {
     fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, {
         headers: {
@@ -131,20 +131,31 @@ const createExercises = function(data){
     ]
 
     let arrayIndex = Math.floor(Math.random() * exerciseData.length);
+    document.getElementById("exercise-type").innerHTML = type;
     document.getElementById("exercise-name").innerHTML = exerciseData[arrayIndex].name;
     document.getElementById("exercise-difficulty").innerHTML = exerciseData[arrayIndex].dificulty;
     document.getElementById("exercise-equipment").innerHTML = exerciseData[arrayIndex].equipment;
     document.getElementById("exercise-instructions").innerHTML = exerciseData[arrayIndex].instructions;
+    
 }
 
+var submitBtnEl = document.querySelector("#generate")
+var formEl = document.querySelector("#suggested-workout-options")
+var populatedDataEl = document.querySelector(".populated-data")
+submitBtnEl.addEventListener("click", function(event){
+    formEl.classList.add("hide");
+    populatedDataEl.classList.remove("hide");
+    event.preventDefault()
+    // fetchApi(type);
+    })
 
 
+// document.querySelector('form').addEventListener('generate', createExercises);
 
+// const addWorkoutHandler = (event) => {
+//     console.log('Add Workout button clicked');
 
-const addWorkoutHandler = (event) => {
-    console.log('Add Workout button clicked');
+//     document.location.replace('/day/workout?addWorkout=true');
+// }
 
-    document.location.replace('/day/workout?addWorkout=true');
-}
-
-document.querySelector('#add-workout').addEventListener('click', addWorkoutHandler);
+// document.querySelector('#add-workout').addEventListener('click', addWorkoutHandler);
