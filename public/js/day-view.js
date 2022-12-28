@@ -1,18 +1,36 @@
-var exercisesApi = "https://api.api-ninjas.com/v1/exercises"
-var apiKey = "5P6QO7VJRqnquUEJr7susQ==jNfogauqhz6Oe2kU";
-var exercisesInfo = document.querySelector(".exercises-info")
-var exercisesNameSection = document.querySelector("#exercise-name")
-var exercisesDifficultySection = document.querySelector("#exercise-difficulty")
-var exercisesInstructionsSection = document.querySelector("#exercise-instructions")
-var exercisesEquipmentSection = document.querySelector("#exercise-equipment")
+const exercisesApi = "https://api.api-ninjas.com/v1/exercises"
+const apiKey = "5P6QO7VJRqnquUEJr7susQ==jNfogauqhz6Oe2kU";
+const exercisesInfo = document.querySelector(".exercises-info")
+const exercisesNameSection = document.querySelector("#exercise-name")
+const exercisesDifficultySection = document.querySelector("#exercise-difficulty")
+const exercisesInstructionsSection = document.querySelector("#exercise-instructions")
+const exercisesEquipmentSection = document.querySelector("#exercise-equipment")
+const typeEl = document.querySelector("#type")
+const submitBtnEl = document.querySelector("#generate")
+const clearBtnEl = document.querySelector("#clear")
+const formEl = document.querySelector("#suggested-workout-options")
+const populatedDataEl = document.querySelector(".populated-data")
 console.log(apiKey);
 
+//Submit button logic to select workout type and call api
+submitBtnEl.addEventListener("click", function (event) {
+    formEl.classList.add("hide");
+    populatedDataEl.classList.remove("hide");
+    event.preventDefault()
+    // let type = typeEl.options[typeEl.selectedIndex].text;
+    console.log(type);
+    fetchApi();
+})
+//Button to clear data and repopulate form
+clearBtnEl.addEventListener("click", function (event) {
+    formEl.classList.remove("hide");
+    populatedDataEl.classList.add("hide");
+    event.preventDefault()
+})
 
-
-// form getter function at the very end will call fetchApi("Musclegroupname")
-var type = 'strength';
+//Function to call API
 function fetchApi() {
-    fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, {
+    fetch('https://api.api-ninjas.com/v1/exercises?type=' + typeEl.options[typeEl.selectedIndex].text, {
         headers: {
             'X-Api-Key': '5P6QO7VJRqnquUEJr7susQ==jNfogauqhz6Oe2kU'
         },
@@ -24,48 +42,13 @@ function fetchApi() {
     }).then(data => {
         console.log(data)
         createExercises(data)
-        // switch (type) {
-        //     case ("cardio"):
-        //         getCardioData(data)
-        //         break;
-        //     case (plyometrics):
-        //         getPlyometricsData(data)
-        //         break;
-        //     case (powerlifting):
-        //         getPowerliftingData(data)
-        //         break;
-        //     case (strength):
-        //         getStrengthData(data)
-        //         break;
-        //     case (stretching):
-        //         getStretchingData(data)
-        //         break;
-        //     default:
-        //         break;
-        // }
     }).catch(error => {
         console.log(error)
     })
 }
-fetchApi(type)
-// function createExercises(data) {
-//     var exerciseName = document.createElement("p");
-//     var exerciseDifficulty = document.createElement("p");
-//     var exerciseInstructions = document.createElement("p");
-//     var exerciseEquipment = document.createElement("p");
-//     console.log(data[0].name);
-//     exerciseName.textContent = data[0].name;
-//     exerciseDifficulty.textContent = data[0].difficulty;
-//     exerciseEquipment.textContent = data[0].equipment;
-//     exerciseInstructions.textContent = data[0].instructions;
-//     exercisesNameSection.append(exerciseName);
-//     exercisesDifficultySection.append(exerciseDifficulty);
-//     exercisesEquipmentSection.append(exerciseEquipment);
-//     exercisesInstructionsSection.append(exerciseInstructions);
 
-// }
-
-const createExercises = function(data){
+//Function with data array and apend logic
+const createExercises = function (data) {
     console.log(data);
     const exerciseData = [
         {
@@ -129,33 +112,20 @@ const createExercises = function(data){
             instructions: data[9].instructions
         }
     ]
-
+    // Logic to populate randomized data to page
     let arrayIndex = Math.floor(Math.random() * exerciseData.length);
-    document.getElementById("exercise-type").innerHTML = type;
+    document.getElementById("exercise-type").innerHTML = typeEl.options[typeEl.selectedIndex].text;
     document.getElementById("exercise-name").innerHTML = exerciseData[arrayIndex].name;
     document.getElementById("exercise-difficulty").innerHTML = exerciseData[arrayIndex].dificulty;
     document.getElementById("exercise-equipment").innerHTML = exerciseData[arrayIndex].equipment;
     document.getElementById("exercise-instructions").innerHTML = exerciseData[arrayIndex].instructions;
-    
+
 }
 
-var submitBtnEl = document.querySelector("#generate")
-var formEl = document.querySelector("#suggested-workout-options")
-var populatedDataEl = document.querySelector(".populated-data")
-submitBtnEl.addEventListener("click", function(event){
-    formEl.classList.add("hide");
-    populatedDataEl.classList.remove("hide");
-    event.preventDefault()
-    // fetchApi(type);
-    })
+const addWorkoutHandler = (event) => {
+    console.log('Add Workout button clicked');
 
+    document.location.replace('/day/workout?addWorkout=true');
+}
 
-// document.querySelector('form').addEventListener('generate', createExercises);
-
-// const addWorkoutHandler = (event) => {
-//     console.log('Add Workout button clicked');
-
-//     document.location.replace('/day/workout?addWorkout=true');
-// }
-
-// document.querySelector('#add-workout').addEventListener('click', addWorkoutHandler);
+document.querySelector('#add-workout').addEventListener('click', addWorkoutHandler);
