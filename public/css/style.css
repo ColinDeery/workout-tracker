@@ -28,15 +28,58 @@
 }
 
 .previous-workout {
-    min-height: 40vh;
+    min-height: 30vh;
     width: 48%;
     border: solid black;
     float: right;
 }
 
+#exercise-difficulty:first-letter {
+    text-transform: uppercase;
+}
+
+#exercise-equipment:first-letter {
+    text-transform: uppercase;
+}
+
 .exercises-info {
-    min-height: 40vh;
+    min-height: 50vh;
     width: 48%;
     border: solid black;
     float: right;
+}
+
+.week-view-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.week-view-header {
+    background-color: #0073FF;
+    padding: 1%;
+    border: solid black;
+    text-align: center;
+    margin-bottom: 4%;
+}
+
+.week-view-body {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.date-card {
+    width: 11%;
+    height: 100%;
+    border: solid black;
+}
+
+.date-card-header {
+    background-color: #0073FF;
+    padding: 1%;
+    border-bottom: solid black;
+    text-align: center;
 }
