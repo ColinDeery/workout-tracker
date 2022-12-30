@@ -19,7 +19,9 @@ router.get('/day', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
+router.get('/day/:id', async (req, res) => {
+    res.render('day')
+});
 router.get('/day/workout', async (req, res) => {
     res.render('add-workout-form');
 });
