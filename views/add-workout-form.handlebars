@@ -4,76 +4,86 @@
     </section>
 
     {{!-- Form to populate fields of Workout Model --}}
-    <form>
-
-        {{!-- Select workout category --}}
-        <section class="d-flex flex-column">
-            <label for="category">Select workout category:</label>
-            <select name="category" id="category">
-                <option value="cardio">Cardio</option>
-                <option value="strength">Strength Training</option>
-                <option value="yoga">Yoga/Pilates</option>
-                <option value="recovery">Recovery/Stretching</option>
-            </select>
-        </section>
-
-        {{!-- Cardio form --}}
-        <section id="cardio">
-            <section class="d-flex flex-column">
-                <label for="cardio-exercise">Exercise:</label>
-                <input type="text" id="cardio-exercise">
-
-                <label for="cardio-duration">Duration:</label>
-                <input type="text" id="cardio-duration">
-
-                <label for="cardio-distance">Distance:</label>
-                <input type="text" id="cardio-distance">
+    <section class="col-8 mx-auto my-5">
+        <section class="card rounded-0">
+            <section class="card-header d-flex justify-content-between rounded-0">
+                <p class="mb-0"><b>Add Workout</b></p>
+                <i class="bi bi-x-square"></i>
+            </section>
+        
+            <section class="card-body rounded-0">
+                <form class="d-flex flex-column">
+            
+                    {{!-- Select workout category --}}
+                    <section class="d-flex flex-column">
+                        <label for="category">Select workout category:</label>
+                        <select name="category" id="category">
+                            <option value="cardio">Cardio</option>
+                            <option value="strength">Strength Training</option>
+                            <option value="yoga">Yoga/Pilates</option>
+                            <option value="recovery">Recovery/Stretching</option>
+                        </select>
+                    </section>
+            
+                    {{!-- Cardio form --}}
+                    <section id="cardio">
+                        <section class="d-flex flex-column">
+                            <label for="cardio-exercise">Exercise:</label>
+                            <input type="text" id="cardio-exercise">
+            
+                            <label for="cardio-duration">Duration:</label>
+                            <input type="text" id="cardio-duration">
+            
+                            <label for="cardio-distance">Distance:</label>
+                            <input type="text" id="cardio-distance">
+                        </section>
+                    </section>
+            
+                    {{!-- Strength training form --}}
+                    <section id="strength" style="display: none">
+                        <section class="d-flex flex-column">
+                            <label for="strength-exercise">Exercise:</label>
+                            <input type="text" id="strength-exercise">
+            
+                            <label for="sets">Sets:</label>
+                            <input type="text" id="sets">
+            
+                            <label for="reps">Reps:</label>
+                            <input type="text" id="reps">
+            
+                            <label for="weight">Weight &#40;lbs&#41;:</label>
+                            <input type="text" id="weight">
+                        </section>
+                    </section>
+            
+                    {{!-- Yoga/Pilates Form --}}
+                    <section id="yoga" style="display: none">
+                        <section class="d-flex flex-column">
+                            <label for="yoga-duration">Duration:</label>
+                            <input type="text" id="yoga-duration">
+            
+                            <label for="yoga-notes">Notes:</label>
+                            <input type="text" id="yoga-notes">
+                        </section>
+                    </section>
+            
+                    {{!-- Recovery/Stretching Form --}}
+                    <section id="recovery" style="display: none">
+                        <section class="d-flex flex-column">
+                            <label for="recovery-duration">Duration:</label>
+                            <input type="text" id="recovery-duration">
+            
+                            <label for="recovery-notes">Notes:</label>
+                            <input type="text" id="recovery-notes">
+                        </section>
+                    </section>
+            
+                    <button type="submit" class="btn btn-primary">Complete</button>
+            
+                </form>
             </section>
         </section>
-
-        {{!-- Strength training form --}}
-        <section id="strength" style="display: none">
-            <section class="d-flex flex-column">
-                <label for="strength-exercise">Exercise:</label>
-                <input type="text" id="strength-exercise">
-
-                <label for="sets">Sets:</label>
-                <input type="text" id="sets">
-
-                <label for="reps">Reps:</label>
-                <input type="text" id="reps">
-
-                <label for="weight">Weight &#40;lbs&#41;:</label>
-                <input type="text" id="weight">
-            </section>
-        </section>
-
-        {{!-- Yoga/Pilates Form --}}
-        <section id="yoga" style="display: none">
-            <section class="d-flex flex-column">
-                <label for="yoga-duration">Duration:</label>
-                <input type="text" id="yoga-duration">
-
-                <label for="yoga-notes">Notes:</label>
-                <input type="text" id="yoga-notes">
-            </section>
-        </section>
-
-        {{!-- Recovery/Stretching Form --}}
-        <section id="recovery" style="display: none">
-            <section class="d-flex flex-column">
-                <label for="recovery-duration">Duration:</label>
-                <input type="text" id="recovery-duration">
-
-                <label for="recovery-notes">Notes:</label>
-                <input type="text" id="recovery-notes">
-            </section>
-        </section>
-
-        <button type="submit">Complete</button>
-
-    </form>
-
+    </section>
 </section>
 
 <script src="../js/add-workout-form.js"></script>

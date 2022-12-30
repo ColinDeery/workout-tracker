@@ -74,3 +74,16 @@
     border-bottom: solid black;
     text-align: center;
 }
+
+input, select {
+    margin-bottom: 10px;
+}
+
+.card {
+    border: solid 2px #0452B3;
+}
+
+.card-header {
+    background-color: #0452B3;
+    color: white;
+}

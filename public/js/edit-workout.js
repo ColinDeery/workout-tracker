@@ -30,5 +30,5 @@ const editWorkoutHandler = async (event) => {
     document.location.replace(`/day/workout/${workoutID}`);
 }
 
-document.querySelectorAll('.fa-square-minus').forEach(element => element.addEventListener('click', delWorkoutHandler));
+document.querySelectorAll('.bi-x-square-fill').forEach(element => element.addEventListener('click', delWorkoutHandler));
 document.querySelectorAll('.fa-pen-to-square').forEach(element => element.addEventListener('click', editWorkoutHandler));

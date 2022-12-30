@@ -66,4 +66,10 @@ const submitWorkoutHandler = async (event) => {
     }
 }
 
+// Exit Add Workout form and return to /day view
+const exitFormHandler = (event) => {
+    document.location.replace('/day');
+}
+
 document.querySelector('form').addEventListener('submit', submitWorkoutHandler);
+document.querySelector('.bi-x-square').addEventListener('click', exitFormHandler);
