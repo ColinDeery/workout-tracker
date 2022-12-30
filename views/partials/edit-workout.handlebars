@@ -1,0 +1,76 @@
+<section class="col-12 mx-auto">
+    <section class="card rounded-0">
+        <section class="card-header d-flex justify-content-between rounded-0">
+            <p class="category mb-0"><b>{{workout.category}}</b></p>
+            <i class="bi bi-x-square"></i>
+        </section>
+
+        <section class="card-body rounded-0">
+            <form class="d-flex flex-column">
+
+                {{!-- Update Cardio form --}}
+                {{#if (ifEquals workout.category "Cardio")}}
+                <section id="cardio">
+                    <section class="d-flex flex-column">
+                        <label for="cardio-exercise">Exercise:</label>
+                        <input type="text" id="cardio-exercise" value="{{workout.exercise}}">
+
+                        <label for="cardio-duration">Duration:</label>
+                        <input type="text" id="cardio-duration" value="{{workout.duration}}">
+
+                        <label for="cardio-distance">Distance:</label>
+                        <input type="text" id="cardio-distance" value="{{workout.distance}}">
+                    </section>
+                </section>
+
+                {{!-- Update Strength Training form --}}
+                {{else if (ifEquals workout.category "Strength Training")}}
+                <section id="strength">
+                    <section class="d-flex flex-column">
+                        <label for="strength-exercise">Exercise:</label>
+                        <input type="text" id="strength-exercise" value="{{workout.exercise}}">
+
+                        <label for="sets">Sets:</label>
+                        <input type="text" id="sets" value="{{workout.sets}}">
+
+                        <label for="reps">Reps:</label>
+                        <input type="text" id="reps" value="{{workout.reps}}">
+
+                        <label for="weight">Weight &#40;lbs&#41;:</label>
+                        <input type="text" id="weight" value="{{workout.weight}}">
+                    </section>
+                </section>
+
+                {{!-- Update Yoga/Pilates form --}}
+                {{else if (ifEquals workout.category "Yoga/Pilates")}}
+                <section id="yoga">
+                    <section class="d-flex flex-column">
+                        <label for="yoga-duration">Duration:</label>
+                        <input type="text" id="yoga-duration" value="{{workout.duration}}">
+
+                        <label for="yoga-notes">Notes:</label>
+                        <input type="text" id="yoga-notes" value="{{workout.notes}}">
+                    </section>
+                </section>
+
+                {{!-- Update Recovery/Stretching form --}}
+                {{else if (ifEquals workout.category "Recovery/Stretching")}}
+                <section id="recovery">
+                    <section class="d-flex flex-column">
+                        <label for="recovery-duration">Duration:</label>
+                        <input type="text" id="recovery-duration" value="{{workout.duration}}">
+
+                        <label for="recovery-notes">Notes:</label>
+                        <input type="text" id="recovery-notes" value="{{workout.notes}}">
+                    </section>
+                </section>
+                {{/if}}
+
+                <button type="submit" class="btn btn-primary">Update Workout</button>
+
+            </form>
+        </section>
+    </section>
+</section>
+
+<script src="/js/edit-workout-form.js"></script>

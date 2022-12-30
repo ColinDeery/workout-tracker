@@ -2,7 +2,7 @@ const updateWorkoutHandler = async (event) => {
     event.preventDefault();
     console.log('Update button clicked');
 
-    const categoryChoice = document.querySelector('#category').textContent;
+    const categoryChoice = document.querySelector('.category').textContent;
     console.log(categoryChoice);
 
     const requestBody = {};
@@ -44,4 +44,10 @@ const updateWorkoutHandler = async (event) => {
     }
 }
 
+// Exit Update Workout form and return to /day view
+const exitFormHandler = (event) => {
+    document.location.replace('/day');
+}
+
 document.querySelector('form').addEventListener('submit', updateWorkoutHandler);
+document.querySelector('.bi-x-square').addEventListener('click', exitFormHandler);

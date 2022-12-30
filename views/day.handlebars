@@ -3,23 +3,33 @@
         <h2>Todays Date</h2>
     </section>
     <section class="day-view-body">
-        <article id="add-workout-button">
+        {{#unless addWorkout}}
+            {{#unless updateWorkout}}
             <button id="add-workout">Add Workout</button>
-        </article>
-        <section class="workout-day-view-sections">
+            {{/unless}}
+        {{/unless}}
+        <section class="workout-day-view-sections d-flex flex-row">
             <article class="todays-workout">
-                <section class="d-flex flex-column col-8">
-                    {{> workout-info}}
+                <section class="d-flex flex-column col-10">
+                    {{#if addWorkout}}
+                        {{> add-workout-form}}
+                    {{else if updateWorkout}}
+                        {{> edit-workout}}
+                    {{else}}
+                        {{> workout-info}}
+                    {{/if}}
                 </section>
             </article>
-            <article class="previous-workout">
-                <p>Insert previous Workouts here</p>
-            </article>
-            <article class="exercises-info">
-                <p>Insert api data here</p>
-            </article>
+            <section class="d-flex flex-column col-6">
+                <article class="previous-workout">
+                    <p>Insert previous Workouts here</p>
+                </article>
+                <article class="exercises-info">
+                    <p>Insert api data here</p>
+                </article>
+            </section>
         </section>
     </section>
 </section>
 
-<script src="../js/day-view.js"></script>
+<script src="/js/day-view.js"></script>

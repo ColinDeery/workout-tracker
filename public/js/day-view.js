@@ -4,4 +4,8 @@ const addWorkoutHandler = (event) => {
     document.location.replace('/day/workout?addWorkout=true');
 }
 
-document.querySelector('#add-workout').addEventListener('click', addWorkoutHandler);
+// Only add event listener if 'Add Workout' button exists
+const addWorkoutBtn = document.querySelector('#add-workout');
+if (addWorkoutBtn) {
+    addWorkoutBtn.addEventListener('click', addWorkoutHandler);
+}

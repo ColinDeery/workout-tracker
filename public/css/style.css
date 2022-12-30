@@ -29,14 +29,14 @@
 
 .previous-workout {
     min-height: 40vh;
-    width: 48%;
+    /* width: 48%; */
     border: solid black;
     float: right;
 }
 
 .exercises-info {
     min-height: 40vh;
-    width: 48%;
+    /* width: 48%; */
     border: solid black;
     float: right;
 }

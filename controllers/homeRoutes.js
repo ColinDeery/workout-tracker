@@ -21,7 +21,9 @@ router.get('/day', async (req, res) => {
 });
 
 router.get('/day/workout', async (req, res) => {
-    res.render('add-workout-form');
+    res.render('day', {
+        addWorkout: req.query.addWorkout
+    });
 });
 
 // At /day/workout/:id, show form to edit workout
@@ -33,7 +35,10 @@ router.get('/day/workout/:id', async (req, res) => {
 
         const workout = workoutData.get({ plain: true });
 
-        res.render('edit-workout', { workout });
+        res.render('day', {
+            workout,
+            updateWorkout: req.query.updateWorkout
+        });
     } catch (err) {
         res.status(500).json(err);
     }
