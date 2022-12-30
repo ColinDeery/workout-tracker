@@ -6,7 +6,7 @@ const { User, Workout } = require('../models');
 
 // router.get('/calendar'), render calendar
 
-// At /day/:id, render day view with all workout info for that day
+// At /day, render day view with all workout info for that day
 router.get('/day', async (req, res) => {
     try {
         const workoutData = await Workout.findAll();
@@ -19,6 +19,10 @@ router.get('/day', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+// router.get('/day/:id', async (req, res) => {
+//     res.render('day')
+// });
 
 router.get('/day/workout', async (req, res) => {
     res.render('day', {

@@ -13,7 +13,13 @@ const updateWorkoutHandler = async (event) => {
     } else if (categoryChoice === 'Strength Training') {
         requestBody.exercise = document.querySelector('#strength-exercise').value;
         requestBody.sets = document.querySelector('#sets').value;
+        if (requestBody.sets === '') {
+            requestBody.sets = null;
+        }
         requestBody.reps = document.querySelector('#reps').value;
+        if (requestBody.reps === '') {
+            requestBody.reps = null;
+        }
         requestBody.weight = document.querySelector('#weight').value;
     } else if (categoryChoice === 'Yoga/Pilates') {
         requestBody.duration = document.querySelector('#yoga-duration').value;

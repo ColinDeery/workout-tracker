@@ -1,3 +1,7 @@
+.hide {
+    display: none !important;
+}
+
 .day-view-card {
     width: 100%;
     display: flex;
@@ -28,14 +32,22 @@
 }
 
 .previous-workout {
-    min-height: 40vh;
+    min-height: 30vh;
     /* width: 48%; */
     border: solid black;
     float: right;
 }
 
+#exercise-difficulty:first-letter {
+    text-transform: uppercase;
+}
+
+#exercise-equipment:first-letter {
+    text-transform: uppercase;
+}
+
 .exercises-info {
-    min-height: 40vh;
+    min-height: 50vh;
     /* width: 48%; */
     border: solid black;
     float: right;
