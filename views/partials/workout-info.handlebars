@@ -1,18 +1,18 @@
 {{!-- Create card for each workout --}}
 {{#each workouts as |workout|}}
 
-<section class="card" id="workout-{{workout.id}}">
-    <section class="card-header d-flex flex-row justify-content-between">
+<section class="card rounded-0" id="workout-{{workout.id}}">
+    <section class="card-header rounded-0 d-flex flex-row justify-content-between">
         <section>
             <p>{{workout.category}} {{#if workout.exercise}} - {{workout.exercise}} {{/if}}</p>
         </section>
         <section>
-            <i class="fa-solid fa-pen-to-square mx-3"></i>
-            <i class="fa-solid fa-square-minus"></i>
+            <i class="bi bi-pencil-square mx-2"></i>
+            <i class="bi bi-x-square-fill" style="color: red"></i>
         </section>
     </section>
 
-    <section class="card-body">
+    <section class="card-body rounded-0">
         <ul>
             {{!-- If property not null, then display info on card --}}
             {{#if workout.type}}
@@ -52,4 +52,4 @@
 
 {{/each}}
 
-<script src="../../js/edit-workout.js"></script>
+<script src="/js/edit-workout.js"></script>

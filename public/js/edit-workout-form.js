@@ -2,7 +2,7 @@ const updateWorkoutHandler = async (event) => {
     event.preventDefault();
     console.log('Update button clicked');
 
-    const categoryChoice = document.querySelector('#category').textContent;
+    const categoryChoice = document.querySelector('.category').textContent;
     console.log(categoryChoice);
 
     const requestBody = {};
@@ -13,7 +13,13 @@ const updateWorkoutHandler = async (event) => {
     } else if (categoryChoice === 'Strength Training') {
         requestBody.exercise = document.querySelector('#strength-exercise').value;
         requestBody.sets = document.querySelector('#sets').value;
+        if (requestBody.sets === '') {
+            requestBody.sets = null;
+        }
         requestBody.reps = document.querySelector('#reps').value;
+        if (requestBody.reps === '') {
+            requestBody.reps = null;
+        }
         requestBody.weight = document.querySelector('#weight').value;
     } else if (categoryChoice === 'Yoga/Pilates') {
         requestBody.duration = document.querySelector('#yoga-duration').value;
@@ -44,4 +50,10 @@ const updateWorkoutHandler = async (event) => {
     }
 }
 
+// Exit Update Workout form and return to /day view
+const exitFormHandler = (event) => {
+    document.location.replace('/day');
+}
+
 document.querySelector('form').addEventListener('submit', updateWorkoutHandler);
+document.querySelector('.bi-x-square').addEventListener('click', exitFormHandler);

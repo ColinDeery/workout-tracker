@@ -27,8 +27,8 @@ const editWorkoutHandler = async (event) => {
     const workoutID = event.target.closest('.card').id.split('-')[1];
     console.log(workoutID);
 
-    document.location.replace(`/day/workout/${workoutID}`);
+    document.location.replace(`/day/workout/${workoutID}?updateWorkout=true`);
 }
 
-document.querySelectorAll('.fa-square-minus').forEach(element => element.addEventListener('click', delWorkoutHandler));
-document.querySelectorAll('.fa-pen-to-square').forEach(element => element.addEventListener('click', editWorkoutHandler));
+document.querySelectorAll('.bi-x-square-fill').forEach(element => element.addEventListener('click', delWorkoutHandler));
+document.querySelectorAll('.bi-pencil-square').forEach(element => element.addEventListener('click', editWorkoutHandler));

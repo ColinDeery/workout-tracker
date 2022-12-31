@@ -42,7 +42,13 @@ const submitWorkoutHandler = async (event) => {
     } else if (categoryChoice === 'Strength Training') {
         requestBody.exercise = document.querySelector('#strength-exercise').value;
         requestBody.sets = document.querySelector('#sets').value;
+        if (requestBody.sets === '') {
+            requestBody.sets = null;
+        }
         requestBody.reps = document.querySelector('#reps').value;
+        if (requestBody.reps === '') {
+            requestBody.reps = null;
+        }
         requestBody.weight = document.querySelector('#weight').value;
     } else if (categoryChoice === 'Yoga/Pilates') {
         requestBody.duration = document.querySelector('#yoga-duration').value;
@@ -66,4 +72,10 @@ const submitWorkoutHandler = async (event) => {
     }
 }
 
+// Exit Add Workout form and return to /day view
+const exitFormHandler = (event) => {
+    document.location.replace('/day');
+}
+
 document.querySelector('form').addEventListener('submit', submitWorkoutHandler);
+document.querySelector('.bi-x-square').addEventListener('click', exitFormHandler);

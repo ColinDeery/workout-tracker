@@ -33,7 +33,7 @@
 
 .previous-workout {
     min-height: 30vh;
-    width: 48%;
+    /* width: 48%; */
     border: solid black;
     float: right;
 }
@@ -48,7 +48,7 @@
 
 .exercises-info {
     min-height: 50vh;
-    width: 48%;
+    /* width: 48%; */
     border: solid black;
     float: right;
 }
@@ -85,4 +85,17 @@
     padding: 1%;
     border-bottom: solid black;
     text-align: center;
+}
+
+input, select {
+    margin-bottom: 10px;
+}
+
+.card {
+    border: solid 2px #0452B3;
+}
+
+.card-header {
+    background-color: #0452B3;
+    color: white;
 }

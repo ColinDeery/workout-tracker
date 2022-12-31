@@ -2,47 +2,59 @@
     <section class="day-header">
         <h2>Todays Date</h2>
     </section>
+
     <section class="day-view-body">
-        <article id="add-workout-button">
-            <button id="add-workout" id="add-workout">Add Workout</button>
-        </article>
-        <section class="workout-day-view-sections">
+        {{#unless addWorkout}}
+            {{#unless updateWorkout}}
+            <button id="add-workout">Add Workout</button>
+            {{/unless}}
+        {{/unless}}
+
+        <section class="workout-day-view-sections d-flex flex-row">
             <article class="todays-workout">
-                <section class="d-flex flex-column col-8">
-                    {{> workout-info}}
-                </section>
-                <section class="d-flex flex-column col-8">
-                    {{> workout-info}}
-                </section>
-            </article>
-            <article class="previous-workout">
-                <p>Insert previous Workouts here</p>
-            </article>
-            <article class="exercises-info">
-                <form id="suggested-workout-options">
-                    <label for="type">Select workout type:</label>
-                    <select name="type" id="type">
-                        <option value="cardio">Cardio</option>
-                        <option value="plyometrics">Plyometrics</option>
-                        <option value="powerlifting">Powerlifting</option>
-                        <option value="strength">Strength</option>
-                        <option value="stretching">Stretching</option>
-                    </select>
-                    <button id="generate">Submit</button>
-                </form>
-                <section class="populated-data hide">
-                    <h3>Suggested <span id="exercise-type"></span> Workout:</h3>
-                    <h4>Exercise Name:</h4>
-                    <p id="exercise-name"></p>
-                    <h4>Exercise Difficulty:</h4>
-                    <p id="exercise-difficulty"></p>
-                    <h4>Exercise Equipment:</h4>
-                    <p id="exercise-equipment"></p>
-                    <h4>Exercise Instructions:</h4>
-                    <p id="exercise-instructions"></p>
-                    <button id="clear">Clear</button>
+                <section class="d-flex flex-column col-10">
+                    {{#if addWorkout}}
+                        {{> add-workout-form}}
+                    {{else if updateWorkout}}
+                        {{> edit-workout}}
+                    {{else}}
+                        {{> workout-info}}
+                    {{/if}}
                 </section>
             </article>
+
+            <section class="d-flex flex-column col-6">
+                <article class="previous-workout">
+                    <p>Insert previous Workouts here</p>
+                </article>
+            
+                <article class="exercises-info">
+                    <form id="suggested-workout-options">
+                        <label for="type">Select workout type:</label>
+                        <select name="type" id="type">
+                            <option value="cardio">Cardio</option>
+                            <option value="plyometrics">Plyometrics</option>
+                            <option value="powerlifting">Powerlifting</option>
+                            <option value="strength">Strength</option>
+                            <option value="stretching">Stretching</option>
+                        </select>
+                        <button id="generate">Submit</button>
+                    </form>
+
+                    <section class="populated-data hide">
+                        <h3>Suggested <span id="exercise-type"></span> Workout:</h3>
+                        <h4>Exercise Name:</h4>
+                        <p id="exercise-name"></p>
+                        <h4>Exercise Difficulty:</h4>
+                        <p id="exercise-difficulty"></p>
+                        <h4>Exercise Equipment:</h4>
+                        <p id="exercise-equipment"></p>
+                        <h4>Exercise Instructions:</h4>
+                        <p id="exercise-instructions"></p>
+                        <button id="clear">Clear</button>
+                    </section>
+                </article>
+            </section>
         </section>
     </section>
 </section>
