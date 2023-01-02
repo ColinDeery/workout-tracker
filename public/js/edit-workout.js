@@ -30,5 +30,57 @@ const editWorkoutHandler = async (event) => {
     document.location.replace(`/day/workout/${workoutID}?updateWorkout=true`);
 }
 
+// If user clicked on Mark Complete btn, show green checkmark
+const toggleToComplete = async (event) => {
+    console.log('Mark Complete button clicked');
+
+    // Grab ID of the workout card that was clicked on
+    const workoutID = event.target.closest('.card').id.split('-')[1];
+
+    // Change "completed" to true
+    const response = await fetch(`/api/workout/${workoutID}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            completed: true
+        }),
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.ok) {
+        console.log('Marked workout complete!');
+        location.reload();
+    } else {
+        alert('Failed to mark workout complete.');
+    }
+}
+
+// If user clicked on green checkmark icon, show Mark Complete btn
+const toggleToIncomplete = async (event) => {
+    console.log('Green checkmark clicked');
+
+    // Grab ID of the workout card that was clicked on
+    const workoutID = event.target.closest('.card').id.split('-')[1];
+
+    // Change "completed" to false
+    const response = await fetch(`/api/workout/${workoutID}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            completed: false
+        }),
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.ok) {
+        console.log('Marked workout incomplete');
+        location.reload();
+    } else {
+        alert('Failed to mark workout incomplete.');
+    }
+}
+
 document.querySelectorAll('.bi-x-square-fill').forEach(element => element.addEventListener('click', delWorkoutHandler));
 document.querySelectorAll('.bi-pencil-square').forEach(element => element.addEventListener('click', editWorkoutHandler));
+// Clicked on green checkmark icon
+document.querySelectorAll('.complete').forEach(element => element.addEventListener('click', toggleToIncomplete));
+// Clicked on Mark Complete button
+document.querySelectorAll('.incomplete').forEach(element => element.addEventListener('click', toggleToComplete));
