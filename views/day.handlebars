@@ -4,15 +4,16 @@
     </section>
 
     <section class="day-view-body">
-        {{#unless addWorkout}}
-            {{#unless updateWorkout}}
-            <button id="add-workout">Add Workout</button>
-            {{/unless}}
-        {{/unless}}
-
         <section class="workout-day-view-sections d-flex flex-row">
             <article class="todays-workout">
                 <section class="d-flex flex-column col-10">
+                    {{!-- Display Add A Workout btn if add/edit-workout-form not displayed --}}
+                    {{#unless addWorkout}}
+                        {{#unless updateWorkout}}
+                        <button id="add-workout" class="btn btn-secondary mb-2 rounded-0">Add A Workout</button>
+                        {{/unless}}
+                    {{/unless}}
+                    
                     {{#if addWorkout}}
                         {{> add-workout-form}}
                     {{else if updateWorkout}}
@@ -20,6 +21,7 @@
                     {{else}}
                         {{> workout-info}}
                     {{/if}}
+
                 </section>
             </article>
 
