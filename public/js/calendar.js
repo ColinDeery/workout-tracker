@@ -23,6 +23,7 @@ WEEKDAYS.forEach((weekday) => {
 
 createCalendar();
 initMonthSelectors();
+renderDayPreview();
 
 function clickDayHandler(event) {
     const date = event.target.closest('.calendar-day').id;
@@ -65,13 +66,13 @@ function createCalendar(year = INITIAL_YEAR, month = INITIAL_MONTH) {
 function appendDay(day, calendarDaysElement) {
     const dayElement = document.createElement("li");
     const dayElementClassList = dayElement.classList;
-    dayElementClassList.add("calendar-day");
+    dayElementClassList.add("calendar-day", "d-flex", "justify-content-center");
     // Add the date as an ID to each dayElement
     dayElement.setAttribute('id', `${day.date}`);
     const dayOfMonthElement = document.createElement("span");
     dayOfMonthElement.innerText = day.dayOfMonth;
     dayElement.appendChild(dayOfMonthElement);
-    
+    calendarDaysElement.appendChild(dayElement);
 
     if (!day.isCurrentMonth) {
         dayElementClassList.add("calendar-day--not-current");
@@ -80,22 +81,24 @@ function appendDay(day, calendarDaysElement) {
     if (day.date === TODAY) {
         dayElementClassList.add("calendar-day--today");
     }  
-    
-    fetch (`/api/workout/${day.date}`, {
-        method: 'GET'
-    }).then((response) => {
-        return response.json();
-    }).then((data) => {
-        console.log(data);
+}
 
-        if (data.length > 0) {
-            const test = document.createElement('p');
-            test.textContent = 'Workouts!';
-            dayElement.appendChild(test);
-        }
-    
-        calendarDaysElement.appendChild(dayElement);
-    });
+// Render preview/indication of workouts scheduled for that day
+function renderDayPreview () {
+    const dayElements = document.querySelectorAll('.calendar-day');
+    console.log(dayElements);
+
+    const arrPromises = Array.from(dayElements, (day) => fetch(`/api/workout/${day.id}`));
+    Promise.all(arrPromises)
+        .then((responses) => {
+            const responsesJSON = responses.map((res) => res.json());
+            return Promise.all(responsesJSON);
+        })
+        .then((data) => {
+            console.log(data);
+            
+            
+        });
 }
 
 function removeAllDayElements(calendarDaysElement) {
@@ -179,6 +182,7 @@ function initMonthSelectors() {
         .addEventListener("click", function () {
             selectedMonth = dayjs(selectedMonth).subtract(1, "month");
             createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"));
+            renderDayPreview();
         });
 
     document
@@ -186,6 +190,7 @@ function initMonthSelectors() {
         .addEventListener("click", function () {
             selectedMonth = dayjs(new Date(INITIAL_YEAR, INITIAL_MONTH - 1, 1));
             createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"));
+            renderDayPreview();
         });
 
     document
@@ -193,5 +198,6 @@ function initMonthSelectors() {
         .addEventListener("click", function () {
             selectedMonth = dayjs(selectedMonth).add(1, "month");
             createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"));
+            renderDayPreview();
         });
 }
