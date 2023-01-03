@@ -28,7 +28,7 @@ function clickDayHandler(event) {
     const date = event.target.closest('.calendar-day').id;
     console.log(date);
 
-    document.location.replace(`/calendar/day`);
+    document.location.replace(`/calendar/day/${date}`);
 }
 
 function createCalendar(year = INITIAL_YEAR, month = INITIAL_MONTH) {

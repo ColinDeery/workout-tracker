@@ -40,7 +40,6 @@ Workout.init(
         notes: {
             type: DataTypes.STRING
         },
-        // look into this!
         date: {
             type: DataTypes.STRING,
         },
