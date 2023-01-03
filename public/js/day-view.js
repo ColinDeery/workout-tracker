@@ -125,7 +125,7 @@ const createExercises = function (data) {
 const addWorkoutHandler = (event) => {
     console.log('Add Workout button clicked');
 
-    document.location.replace('/day/workout?addWorkout=true');
+    document.location.replace('/calendar/day/workout?addWorkout=true');
 }
 
 // Only add event listener if 'Add Workout' button exists
