@@ -44,6 +44,9 @@ Workout.init(
         date: {
             type: DataTypes.INTEGER,
         },
+        completed: {
+            type: DataTypes.BOOLEAN
+        },
         // user_id: {
         //     type: DataTypes.INTEGER,
         //     references: {
