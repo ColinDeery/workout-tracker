@@ -51,6 +51,19 @@
     /* width: 48%; */
     border: solid black;
     float: right;
+    padding:10px;
+}
+/* Exersice info api submit button */
+#generate{
+    color:white;
+    background-color: #0452B3;
+    border: none;
+}
+/* Exersice info api clear button */
+#clear{
+    color:white;
+    background-color: red;
+    border: none;
 }
 
 .week-view-card {

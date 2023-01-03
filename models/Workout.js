@@ -42,7 +42,7 @@ Workout.init(
         },
         // look into this!
         date: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
         },
         completed: {
             type: DataTypes.BOOLEAN

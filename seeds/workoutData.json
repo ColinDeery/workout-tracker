@@ -1,0 +1,22 @@
+[
+    {
+        "category": "Cardio",
+        "exercise": "Burpee",
+        "duration": "30 minutes",
+        "sets": "3",
+        "reps": "10",
+        "notes": "Don't fail.",
+        "date": "2023-01-03",
+        "completed": "false"
+    },
+    {
+        "category": "Strength Training",
+        "exercise": "Landmine twist",
+        "duration": "45 minutes",
+        "sets": "4",
+        "reps": "10",
+        "notes": "You're doing a great job!",
+        "date": "2023-01-03",
+        "completed": "true"
+    }
+]
