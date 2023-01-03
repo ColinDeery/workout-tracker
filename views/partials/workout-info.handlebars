@@ -1,0 +1,62 @@
+{{!-- Create card for each workout --}}
+{{#each workouts as |workout|}}
+
+<section class="card rounded-0" id="workout-{{workout.id}}">
+    <section class="card-header rounded-0 d-flex flex-row justify-content-between">
+        <section>
+            <p class="mb-0">{{workout.category}} {{#if workout.exercise}} - {{workout.exercise}} {{/if}}</p>
+        </section>
+        <section>
+            <i class="bi bi-pencil-square mx-2"></i>
+            <i class="bi bi-x-square-fill" style="color: red"></i>
+        </section>
+    </section>
+
+    <section class="card-body rounded-0 d-flex flex-row justify-content-between">
+        <ul>
+            {{!-- If property not null, then display info on card --}}
+            {{#if workout.type}}
+            <li>Type: {{workout.type}}</li>
+            {{/if}}
+
+            {{!-- {{#if workout.exercise}}
+            <li>Exercise: {{workout.exercise}}</li>
+            {{/if}} --}}
+
+            {{#if workout.duration}}
+            <li>Duration: {{workout.duration}}</li>
+            {{/if}}
+            
+            {{#if workout.distance}}
+            <li>Distance: {{workout.distance}}</li>
+            {{/if}}
+
+            {{#if workout.sets}}
+            <li>Number of Sets: {{workout.sets}}</li>
+            {{/if}}
+
+            {{#if workout.reps}}
+            <li>Number of Reps/set: {{workout.reps}}</li>
+            {{/if}}
+
+            {{#if workout.weight}}
+            <li>Weight &#40;lbs&#41;: {{workout.weight}}</li>
+            {{/if}}
+
+            {{#if workout.notes}}
+            <li>Notes: {{workout.notes}}</li>
+            {{/if}}
+        </ul>
+        
+        {{!-- If user marked workout complete, show green checkmark icon, otherwise show Mark Complete button --}}
+        {{#if workout.completed}}
+        <i class="complete bi bi-check-circle-fill fa-2x align-self-end" style="color: green"></i>
+        {{else}}
+        <button class="incomplete btn btn-secondary align-self-end">Mark Complete</button>
+        {{/if}}
+    </section>
+</section>
+
+{{/each}}
+
+<script src="/js/edit-workout.js"></script>

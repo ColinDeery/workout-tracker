@@ -18,28 +18,42 @@ Workout.init(
         },
         type: {
             type: DataTypes.STRING,
-            allowNull: false
         },
         exercise: {
             type: DataTypes.STRING,
-            allowNull: false
         },
         duration: {
-            type: DataTypes.DECIMAL,
-            allowNull: false
+            type: DataTypes.STRING,
+        },
+        distance: {
+            type: DataTypes.STRING,
+        },
+        sets: {
+            type: DataTypes.INTEGER
+        },
+        reps: {
+            type: DataTypes.INTEGER
+        },
+        weight: {
+            type: DataTypes.STRING
+        },
+        notes: {
+            type: DataTypes.STRING
         },
         // look into this!
         date: {
             type: DataTypes.INTEGER,
-            allowNull: false,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
-        }
+        completed: {
+            type: DataTypes.BOOLEAN
+        },
+        // user_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'user',
+        //         key: 'id',
+        //     },
+        // }
     },
     {
         sequelize,

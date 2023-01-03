@@ -12,15 +12,15 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// const sess = {
-//   secret: process.env.SECRET,
-//   cookie: {},
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new SequelizeStore({
-//     db: sequelize,
-//   }),
-// };
+const sess = {
+  secret: process.env.secret,
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
 
 // app.use(session(sess));
 
