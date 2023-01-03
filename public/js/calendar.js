@@ -97,7 +97,36 @@ function renderDayPreview () {
         .then((data) => {
             console.log(data);
             
-            
+            // Loop through each day on calendar
+            for (let i = 0; i < data.length; i++) {
+                const preview = document.createElement('p');
+                // If day has saved workouts
+                if (data[i].length > 0) {
+                    const workoutsForDay = data[i];
+                    let dayCompleted = true;
+                    // Loop through each workout for that day
+                    for (let j = 0; j < workoutsForDay.length; j++) {
+                        if (!workoutsForDay[j].completed) {
+                            dayCompleted = false;
+                        }
+                    }
+
+                    if (dayCompleted) {
+                        const completedIcon = document.createElement('i');
+                        completedIcon.setAttribute('class', 'bi bi-check-circle-fill');
+                        completedIcon.setAttribute('style', 'font-size: 3.5rem; color: green');
+                        dayElements[i].appendChild(completedIcon);
+                    } else {
+                        const numWorkouts = document.createElement('h5');
+                        numWorkouts.textContent = `Exercise(s): ${workoutsForDay.length}`;
+                        numWorkouts.classList.add('align-self-center');
+                        dayElements[i].appendChild(numWorkouts);
+                        dayElements[i].setAttribute('style', 'background-color: #FAE3E1');
+                    }
+                    preview.textContent = `${data[i].length} Workouts!`;
+                }
+                console.log(dayElements[i]);
+            }
         });
 }
 
