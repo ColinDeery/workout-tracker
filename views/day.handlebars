@@ -5,8 +5,9 @@
 
     <section class="day-view-body">
         <section class="workout-day-view-sections d-flex flex-row">
-            <article class="todays-workout">
-                <section class="d-flex flex-column col-10">
+            <article class="todays-workout scrollable">
+                <section class="d-flex flex-column col-10 content-wrapper">
+                    <section class="content">
                     {{!-- Display Add A Workout btn if add/edit-workout-form not displayed --}}
                     {{#unless addWorkout}}
                         {{#unless updateWorkout}}
@@ -21,7 +22,7 @@
                     {{else}}
                         {{> workout-info}}
                     {{/if}}
-
+                    </section>
                 </section>
             </article>
 
@@ -40,7 +41,7 @@
                             <option value="strength">Strength</option>
                             <option value="stretching">Stretching</option>
                         </select>
-                        <button id="generate">Submit</button>
+                        <button class="generate btn btn-secondary mb-2">Submit</button>
                     </form>
 
                     <section class="populated-data hide">
@@ -53,7 +54,7 @@
                         <p id="exercise-equipment"></p>
                         <h4>Exercise Instructions:</h4>
                         <p id="exercise-instructions"></p>
-                        <button id="clear">Clear</button>
+                        <button class="clear btn btn-danger mb-2">Clear</button>
                     </section>
                 </article>
             </section>

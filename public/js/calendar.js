@@ -71,7 +71,7 @@ function appendDay(day, calendarDaysElement) {
     const dayOfMonthElement = document.createElement("span");
     dayOfMonthElement.innerText = day.dayOfMonth;
     dayElement.appendChild(dayOfMonthElement);
-    calendarDaysElement.appendChild(dayElement);
+    
 
     if (!day.isCurrentMonth) {
         dayElementClassList.add("calendar-day--not-current");
@@ -79,7 +79,23 @@ function appendDay(day, calendarDaysElement) {
 
     if (day.date === TODAY) {
         dayElementClassList.add("calendar-day--today");
-    }
+    }  
+    
+    fetch (`/api/workout/${day.date}`, {
+        method: 'GET'
+    }).then((response) => {
+        return response.json();
+    }).then((data) => {
+        console.log(data);
+
+        if (data.length > 0) {
+            const test = document.createElement('p');
+            test.textContent = 'Workouts!';
+            dayElement.appendChild(test);
+        }
+    
+        calendarDaysElement.appendChild(dayElement);
+    });
 }
 
 function removeAllDayElements(calendarDaysElement) {
