@@ -44,7 +44,7 @@ const updateWorkoutHandler = async (event) => {
     // If response is ok, redirect user back to /day and show updated list of workouts
     if (response.ok) {
         console.log('Successfully updated workout!');
-        document.location.replace('/day');
+        document.location.replace('/calendar/day');
     } else {
         alert('Failed to update workout.');
     }
@@ -52,7 +52,7 @@ const updateWorkoutHandler = async (event) => {
 
 // Exit Update Workout form and return to /day view
 const exitFormHandler = (event) => {
-    document.location.replace('/day');
+    document.location.replace('/calendar/day');
 }
 
 document.querySelector('form').addEventListener('submit', updateWorkoutHandler);

@@ -9,7 +9,7 @@ router.get('/calendar', async (req, res) => {
 });
 
 // Render day view with all workout info for that day
-router.get('/calendar/day/:id', async (req, res) => {
+router.get('/calendar/day', async (req, res) => {
     try {
         const workoutData = await Workout.findAll();
 
@@ -26,14 +26,14 @@ router.get('/calendar/day/:id', async (req, res) => {
 //     res.render('day')
 // });
 
-router.get('/day/workout', async (req, res) => {
+router.get('/calendar/day/workout', async (req, res) => {
     res.render('day', {
         addWorkout: req.query.addWorkout
     });
 });
 
 // Show form to edit workout
-router.get('/day/workout/:id', async (req, res) => {
+router.get('/calendar/day/workout/:id', async (req, res) => {
     try {
         const workoutData = await Workout.findByPk(req.params.id);
 
