@@ -58,6 +58,12 @@ const submitWorkoutHandler = async (event) => {
         requestBody.notes = document.querySelector('#recovery-notes').value;
     }
 
+    // Add current date to requestBody
+    console.log(document.location.href);
+    const arrURL = document.location.href.split('/');
+    const date = arrURL[arrURL.length - 2];
+    requestBody.date = date;
+
     const response = await fetch('/api/workout/', {
         method: 'POST',
         body: JSON.stringify(requestBody),
@@ -66,7 +72,7 @@ const submitWorkoutHandler = async (event) => {
 
     if (response.ok) {
         console.log('Successfully added workout!');
-        document.location.replace('/calendar/day');
+        document.location.replace(`/calendar/day/${date}`);
     } else {
         alert('Failed to add workout.');
     }
@@ -74,7 +80,9 @@ const submitWorkoutHandler = async (event) => {
 
 // Exit Add Workout form and return to /day view
 const exitFormHandler = (event) => {
-    document.location.replace('/calendar/day');
+    const arrURL = document.location.href.split('/');
+    const date = arrURL[arrURL.length - 2];
+    document.location.replace(`/calendar/day/${date}`);
 }
 
 document.querySelector('form').addEventListener('submit', submitWorkoutHandler);

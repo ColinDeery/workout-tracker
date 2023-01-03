@@ -40,9 +40,8 @@ Workout.init(
         notes: {
             type: DataTypes.STRING
         },
-        // look into this!
         date: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
         },
         completed: {
             type: DataTypes.BOOLEAN
