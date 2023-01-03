@@ -13,7 +13,7 @@ const delWorkoutHandler = async (event) => {
 
     if (response.ok) {
         console.log('Deleted workout successfully!');
-        document.location.replace('/day');
+        document.location.replace('/calendar/day');
     } else {
         alert('Failed to delete workout.');
     }
@@ -27,7 +27,7 @@ const editWorkoutHandler = async (event) => {
     const workoutID = event.target.closest('.card').id.split('-')[1];
     console.log(workoutID);
 
-    document.location.replace(`/day/workout/${workoutID}?updateWorkout=true`);
+    document.location.replace(`/calendar/day/workout/${workoutID}?updateWorkout=true`);
 }
 
 // If user clicked on Mark Complete btn, show green checkmark

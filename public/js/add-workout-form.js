@@ -66,7 +66,7 @@ const submitWorkoutHandler = async (event) => {
 
     if (response.ok) {
         console.log('Successfully added workout!');
-        document.location.replace('/day');
+        document.location.replace('/calendar/day');
     } else {
         alert('Failed to add workout.');
     }
@@ -74,7 +74,7 @@ const submitWorkoutHandler = async (event) => {
 
 // Exit Add Workout form and return to /day view
 const exitFormHandler = (event) => {
-    document.location.replace('/day');
+    document.location.replace('/calendar/day');
 }
 
 document.querySelector('form').addEventListener('submit', submitWorkoutHandler);
