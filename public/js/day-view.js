@@ -6,8 +6,8 @@ const exercisesDifficultySection = document.querySelector("#exercise-difficulty"
 const exercisesInstructionsSection = document.querySelector("#exercise-instructions")
 const exercisesEquipmentSection = document.querySelector("#exercise-equipment")
 const typeEl = document.querySelector("#type")
-const submitBtnEl = document.querySelector("#generate")
-const clearBtnEl = document.querySelector("#clear")
+const submitBtnEl = document.querySelector(".generate")
+const clearBtnEl = document.querySelector(".clear")
 const formEl = document.querySelector("#suggested-workout-options")
 const populatedDataEl = document.querySelector(".populated-data")
 console.log(apiKey);

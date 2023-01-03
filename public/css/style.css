@@ -63,13 +63,13 @@
     height: -webkit-fill-available;
 }
 /* Exersice info api submit button */
-#generate{
+/* .generate{
     color:white;
     background-color: #0452B3;
     border: none;
-}
+} */
 /* Exersice info api clear button */
-#clear{
+.clear{
     color:white;
     background-color: red;
     border: none;
