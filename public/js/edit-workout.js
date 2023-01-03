@@ -11,9 +11,13 @@ const delWorkoutHandler = async (event) => {
         method: 'DELETE'
     });
 
+    console.log(document.location.href);
+    const arrURL = document.location.href.split('/');
+    const date = arrURL[arrURL.length - 1];
+
     if (response.ok) {
         console.log('Deleted workout successfully!');
-        document.location.replace('/calendar/day');
+        document.location.replace(`/calendar/day/${date}`);
     } else {
         alert('Failed to delete workout.');
     }
@@ -27,7 +31,10 @@ const editWorkoutHandler = async (event) => {
     const workoutID = event.target.closest('.card').id.split('-')[1];
     console.log(workoutID);
 
-    document.location.replace(`/calendar/day/workout/${workoutID}?updateWorkout=true`);
+    const arrURL = document.location.href.split('/');
+    const date = arrURL[arrURL.length - 1];
+
+    document.location.replace(`/calendar/day/${date}/workout/${workoutID}?updateWorkout=true`);
 }
 
 // If user clicked on Mark Complete btn, show green checkmark

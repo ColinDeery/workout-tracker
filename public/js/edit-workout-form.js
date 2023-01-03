@@ -41,10 +41,14 @@ const updateWorkoutHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' }
     });
 
+    console.log(document.location.href);
+    const arrURL = document.location.href.split('/');
+    const date = arrURL[arrURL.length - 3];
+
     // If response is ok, redirect user back to /day and show updated list of workouts
     if (response.ok) {
         console.log('Successfully updated workout!');
-        document.location.replace('/calendar/day');
+        document.location.replace(`/calendar/day/${date}`);
     } else {
         alert('Failed to update workout.');
     }
@@ -52,7 +56,11 @@ const updateWorkoutHandler = async (event) => {
 
 // Exit Update Workout form and return to /day view
 const exitFormHandler = (event) => {
-    document.location.replace('/calendar/day');
+    console.log(document.location.href);
+    const arrURL = document.location.href.split('/');
+    const date = arrURL[arrURL.length - 3];
+
+    document.location.replace(`/calendar/day/${date}`);
 }
 
 document.querySelector('form').addEventListener('submit', updateWorkoutHandler);
