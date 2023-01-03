@@ -4,10 +4,12 @@ const { User, Workout } = require('../models');
 
 // router.get('/'), render login page
 
-// router.get('/calendar'), render calendar
+router.get('/calendar', async (req, res) => {
+    res.render('calendar');
+});
 
-// At /day, render day view with all workout info for that day
-router.get('/day', async (req, res) => {
+// Render day view with all workout info for that day
+router.get('/calendar/day/:id', async (req, res) => {
     try {
         const workoutData = await Workout.findAll();
 
@@ -30,7 +32,7 @@ router.get('/day/workout', async (req, res) => {
     });
 });
 
-// At /day/workout/:id, show form to edit workout
+// Show form to edit workout
 router.get('/day/workout/:id', async (req, res) => {
     try {
         const workoutData = await Workout.findByPk(req.params.id);
@@ -47,6 +49,5 @@ router.get('/day/workout/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
 
 module.exports = router;
