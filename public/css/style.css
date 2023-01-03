@@ -24,17 +24,19 @@
 }
 
 .todays-workout {
-    min-height: 80vh;
+    /* min-height: 80vh; */
     width: 50%;
     display: inline-flex;
-    ;
     border: solid black;
+    /* height: 100vh !important; */
+    height: -webkit-fill-available !important;
 }
 
 .previous-workout {
-    min-height: 30vh;
+    min-height: 50vh;
     /* width: 48%; */
-    border: solid black;
+    border: black;
+    border-style: none none solid solid;
     float: right;
 }
 
@@ -46,12 +48,19 @@
     text-transform: uppercase;
 }
 
+.workout-day-view-sections{
+    height: fit-content;
+    border: black solid;
+}
+
 .exercises-info {
     min-height: 50vh;
     /* width: 48%; */
-    border: solid black;
+    border: black;
+    border-style: none none none solid;
     float: right;
     padding:10px;
+    height: -webkit-fill-available;
 }
 /* Exersice info api submit button */
 #generate{
@@ -221,4 +230,51 @@ li {
     border-radius: 9999px;
     background-color: var(--grey-800);
 }
-  
+
+.scrollable {
+    /* padding: 0% 10%; */
+    position: relative;
+    border: 1px solid gray;
+    overflow: hidden;
+    height: 400px;
+}
+
+.scrollable.showScroll::after {
+    position: absolute;
+    content: '';
+    top: 5%;
+    right: 7px;
+    height: 90%;
+    width: 3px;
+    background: rgba(224, 224, 255, .3);
+}
+
+.scrollable .content-wrapper {
+    width: 100%;
+    height: 100%;
+    /* padding-right: 50%; */
+    /* overflow-y: scroll; */
+}
+.scroller {
+    z-index: 5;
+    cursor: pointer;
+    position: absolute;
+    width: 10px;
+    border-radius: 5px;
+    background: rgb(111, 111, 190);
+    top: 0px;
+    right: 3px;
+    -webkit-transition: top .08s;
+    -moz-transition: top .08s;
+    -ms-transition: top .08s;
+    -o-transition: top .08s;
+    transition: top .08s;
+}
+.content {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
