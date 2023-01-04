@@ -79,4 +79,20 @@ router.get('/:date', async (req, res) => {
     }
 });
 
+router.get('/', async (req, res) => {
+    console.log('Reached /api/workout/:date');
+    try {
+        const workoutData = await Workout.findAll({
+            where: {
+                user_id: req.session.userId
+            }
+        });
+
+        res.status(200).json(workoutData);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json();
+    }
+});
+
 module.exports = router;

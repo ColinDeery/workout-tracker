@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Workout } = require('../../models');
 
 // At /api/:date, adds previous workout data from most recent completed workout
-router.post('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
       const previousWorkout = await Workout.create({
         ...req.body,

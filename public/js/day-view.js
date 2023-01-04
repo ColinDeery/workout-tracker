@@ -12,6 +12,23 @@ const formEl = document.querySelector("#suggested-workout-options")
 const populatedDataEl = document.querySelector(".populated-data")
 console.log(apiKey);
 
+
+
+const response = fetch(`/api/workout/`, {
+    method: 'GET',
+}).then(response => {
+    console.log(response)
+    if (response.ok) {
+        return response.json()
+    }
+}).then(data => {
+    console.log(data)
+    createExercises(data)
+}).catch(error => {
+    console.log(error)
+})
+
+
 //Submit button logic to select workout type and call api
 submitBtnEl.addEventListener("click", function (event) {
     formEl.classList.add("hide");
