@@ -99,7 +99,6 @@ function renderDayPreview () {
             
             // Loop through each day on calendar
             for (let i = 0; i < data.length; i++) {
-                const preview = document.createElement('p');
                 // If day has saved workouts
                 if (data[i].length > 0) {
                     const workoutsForDay = data[i];
@@ -111,11 +110,13 @@ function renderDayPreview () {
                         }
                     }
 
+                    // If all workouts for that day are completed, render green checkmark
                     if (dayCompleted) {
                         const completedIcon = document.createElement('i');
-                        completedIcon.setAttribute('class', 'bi bi-check-circle-fill');
+                        completedIcon.setAttribute('class', 'bi bi-check-circle-fill align-self-center');
                         completedIcon.setAttribute('style', 'font-size: 3.5rem; color: green');
                         dayElements[i].appendChild(completedIcon);
+                    // Otherwise, change color of day element and render number of exercises/workouts for that day
                     } else {
                         const numWorkouts = document.createElement('h5');
                         numWorkouts.textContent = `Exercise(s): ${workoutsForDay.length}`;
@@ -123,9 +124,7 @@ function renderDayPreview () {
                         dayElements[i].appendChild(numWorkouts);
                         dayElements[i].setAttribute('style', 'background-color: #FAE3E1');
                     }
-                    preview.textContent = `${data[i].length} Workouts!`;
                 }
-                console.log(dayElements[i]);
             }
         });
 }
