@@ -5,12 +5,14 @@ const exercisesNameSection = document.querySelector("#exercise-name")
 const exercisesDifficultySection = document.querySelector("#exercise-difficulty")
 const exercisesInstructionsSection = document.querySelector("#exercise-instructions")
 const exercisesEquipmentSection = document.querySelector("#exercise-equipment")
+const previousWorkoutSection = document.querySelector(".previous-workout")
 const typeEl = document.querySelector("#type")
 const submitBtnEl = document.querySelector(".generate")
 const clearBtnEl = document.querySelector(".clear")
 const formEl = document.querySelector("#suggested-workout-options")
 const populatedDataEl = document.querySelector(".populated-data")
 console.log(apiKey);
+
 
 //Submit button logic to select workout type and call api
 submitBtnEl.addEventListener("click", function (event) {
@@ -126,7 +128,7 @@ const addWorkoutHandler = (event) => {
     console.log('Add Workout button clicked');
     console.log(document.location.href);
     const arrURL = document.location.href.split('/');
-    const date = arrURL[arrURL.length-1];
+    const date = arrURL[arrURL.length - 1];
     console.log(date);
     document.location.replace(`/calendar/day/${date}/workout?addWorkout=true`);
 }
@@ -147,30 +149,30 @@ if (addWorkoutBtn) {
         scroller,
         topPosition,
         scrollerHeight;
-    
+
     function calculateScrollerHeight() {
         // *Calculation of how tall scroller should be
         var visibleRatio = scrollContainer.offsetHeight / scrollContentWrapper.scrollHeight;
         return visibleRatio * scrollContainer.offsetHeight;
     }
-    
+
     function moveScroller(evt) {
         // Move Scroll bar to top offset
         var scrollPercentage = evt.target.scrollTop / scrollContentWrapper.scrollHeight;
         topPosition = scrollPercentage * (scrollContainer.offsetHeight - 5); // 5px arbitrary offset so scroll bar doesn't move too far beyond content wrapper bounding box
         scroller.style.top = topPosition + 'px';
     }
-    
+
     function startDrag(evt) {
         normalizedPosition = evt.pageY;
         contentPosition = scrollContentWrapper.scrollTop;
         scrollerBeingDragged = true;
     }
-    
+
     function stopDrag(evt) {
         scrollerBeingDragged = false;
     }
-    
+
     function scrollBarScroll(evt) {
         if (scrollerBeingDragged === true) {
             var mouseDifferential = evt.pageY - normalizedPosition;
@@ -178,41 +180,54 @@ if (addWorkoutBtn) {
             scrollContentWrapper.scrollTop = contentPosition + scrollEquivalent;
         }
     }
-    
+
     function createScroller() {
         // *Creates scroller element and appends to '.scrollable' div
         // create scroller element
         scroller = document.createElement("div");
         scroller.className = 'scroller';
-    
+
         // determine how big scroller should be based on content
         scrollerHeight = calculateScrollerHeight();
-    
-        if (scrollerHeight / scrollContainer.offsetHeight < 1){
+
+        if (scrollerHeight / scrollContainer.offsetHeight < 1) {
             // *If there is a need to have scroll bar based on content size
             scroller.style.height = scrollerHeight + 'px';
-    
+
             // append scroller to scrollContainer div
             scrollContainer.appendChild(scroller);
-    
+
             // show scroll path divot
             scrollContainer.className += ' showScroll';
-    
+
             // attach related draggable listeners
             scroller.addEventListener('mousedown', startDrag);
             window.addEventListener('mouseup', stopDrag);
             window.addEventListener('mousemove', scrollBarScroll)
         }
-    
+
     }
-    
+
     createScroller();
-    
-    
+
+
     // *** Listeners ***
     scrollContentWrapper.addEventListener('scroll', moveScroller);
-    }());
+}());
 
+const format_date = (date) => {
+    const [year, month, day] = date.split('-');
+    const dateObj = new Date(year, month - 1, day);
+
+    const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    };
+
+    return dateObj.toLocaleString("en-US", options);
+}
 // Fetch previous workouts
 function fetchPreviousWorkout() {
     // const response = await fetch(`/api/workout`);
@@ -221,27 +236,61 @@ function fetchPreviousWorkout() {
 
     fetch(`/api/workout`)
         .then((response) => {
+
             return response.json();
         }).then((data) => {
             console.log(data);
             const sortedWorkouts = data.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
             console.log(sortedWorkouts);
 
-            let prevCompletedWorkout;
+            let prevCompletedWorkout = []
+
             for (let i = 0; i < sortedWorkouts.length; i++) {
                 if (sortedWorkouts[i].completed) {
                     console.log(sortedWorkouts[i]);
-
-                    prevCompletedWorkout = sortedWorkouts[i];
-                    return;
+                    prevCompletedWorkout.push(sortedWorkouts[i])
                 }
             }
 
+            console.log(prevCompletedWorkout);
+            console.log(prevCompletedWorkout[0].duration);
+
+            if (prevCompletedWorkout.length > 1) {
+                JSC.Chart('chartDiv', {
+                    type: 'horizontal column',
+                    series: [
+                        {
+                            points: [
+                                { x: `${prevCompletedWorkout[0].category} ${format_date(prevCompletedWorkout[0].date)}`, y: `${parseInt(prevCompletedWorkout[0].duration)}` },
+                                { x: `${prevCompletedWorkout[1].category} ${format_date(prevCompletedWorkout[1].date)}`, y: `${parseInt(prevCompletedWorkout[1].duration)}` },
+                            ]
+                        }
+                    ]
+                });
+            } if (prevCompletedWorkout.length == 1) {
+                JSC.Chart('chartDiv', {
+                    type: 'horizontal column',
+                    series: [
+                        {
+                            points: [
+                                { x: `${prevCompletedWorkout[0].category} ${format_date(prevCompletedWorkout[0].date)}`, y: 50 },
+                            ]
+                        }
+                    ]
+                });
+            } 
+            if (prevCompletedWorkout.length < 1) {
+                const noPrevWorkoutsAlert = document.createElement("h3");
+                noPrevWorkoutsAlert.textContent = "No Prior Workouts Found";
+                previousWorkoutSection.append(noPrevWorkoutsAlert);
+            }
+
+            
+
+            
+
         });
-
-    
-
-    
 }
+
 
 fetchPreviousWorkout();

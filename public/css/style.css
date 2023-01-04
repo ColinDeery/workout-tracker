@@ -37,6 +37,7 @@ li a {
 .todays-workout {
     /* min-height: 80vh; */
     width: 50%;
+    padding:10px;
     display: inline-flex;
     border: solid black;
     /* height: 100vh !important; */
@@ -45,6 +46,7 @@ li a {
 
 .previous-workout {
     min-height: 50vh;
+    padding:10px;
     /* width: 48%; */
     border: black;
     border-style: none none solid solid;

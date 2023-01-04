@@ -1,3 +1,4 @@
+<header> <a href="/calendar">View Calendar</a></header>
 <section class="day-view-card">
     <section class="day-header d-flex justify-content-between">
         <h2>{{format_date date}}</h2>
@@ -15,56 +16,39 @@
             <article class="todays-workout scrollable">
                 <section class="d-flex flex-column col-10 content-wrapper">
                     <section class="content">
-                    {{!-- Display Add A Workout btn if add/edit-workout-form not displayed --}}
-                    {{#unless addWorkout}}
+                        {{!-- Display Add A Workout btn if add/edit-workout-form not displayed --}}
+                        {{#unless addWorkout}}
                         {{#unless updateWorkout}}
                         <button id="add-workout" class="btn btn-secondary mb-2 rounded-0">Add A Workout</button>
                         {{/unless}}
-                    {{/unless}}
-                    
-                    {{#if addWorkout}}
+                        {{/unless}}
+
+                        {{#if addWorkout}}
                         {{> add-workout-form}}
-                    {{else if updateWorkout}}
+                        {{else if updateWorkout}}
                         {{> edit-workout}}
-                    {{else}}
+                        {{else}}
                         {{> workout-info}}
-                    {{/if}}
+                        {{/if}}
                     </section>
                 </section>
             </article>
 
             <section class="d-flex flex-column col-6">
                 <article class="previous-workout">
-                    <p>Previous Workout:</p>
-                    <h4>Category: {{prevWorkout.category}}</h4>
-                    <h4>Date: {{format_date prevWorkout.date}}</h4>
-
-                    {{#if prevWorkout.exercise}}
-                    <p>Exercise: {{prevWorkout.exercise}}</p>
-                    {{/if}}
-
-                    {{#if prevWorkout.duration}}
-                    <p>Duration: {{prevWorkout.duration}}</p>
-                    {{/if}}
-
-                    {{#if prevWorkout.distance}}
-                    <p>Distance: {{prevWorkout.distance}}</p>
-                    {{/if}}
-
-                    {{#if prevWorkout.sets}}
-                    <p>Sets: {{prevWorkout.sets}}</p>
-                    {{/if}}
-
-                    {{#if prevWorkout.reps}}
-                    <p>Reps: {{prevWorkout.reps}}</p>
-                    {{/if}}
-
-                    {{#if prevWorkout.weight}}
-                    <p>Weight: {{prevWorkout.weight}}</p>
-                    {{/if}}
+                    <h5>Previous Workouts:</h5>
                     
+                    {{#if prevWorkout.category}}
+                    <h4>Category: {{prevWorkout.category}}</h4>
+                    {{/if}}
+
+                    {{#if prevWorkout.date}}
+                    <h4>Date: {{format_date prevWorkout.date}}</h4>
+                    {{/if}}
+
+                    <div id="chartDiv" style="width:50%; height:300px; margin:0 auto;"></div>
                 </article>
-            
+
                 <article class="exercises-info">
                     <form id="suggested-workout-options">
                         <label for="type">Select workout type:</label>
@@ -95,5 +79,5 @@
         </section>
     </section>
 </section>
-
+<script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
 <script src="/js/day-view.js"></script>
