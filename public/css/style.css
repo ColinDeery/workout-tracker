@@ -70,7 +70,6 @@ li a {
     /* border-width: 1px; */
     margin-right: 5px;
     border-radius: 8px;
-    padding: 5px;
     /* height: 100vh !important; */
     height: -webkit-fill-available !important;
 }
@@ -83,7 +82,6 @@ li a {
     border-style: none none solid solid;
     border-width: 1px; */
     border-radius: 8px;
-    padding: 5px;
     background-color: #fff;
     float: right;
     margin-left: 5px;
@@ -105,7 +103,6 @@ li a {
     border-style: none none none solid;
     border-width: 1px; */
     border-radius: 8px;
-    padding: 5px;
     background-color: #fff;
     float: right;
     padding:10px;
