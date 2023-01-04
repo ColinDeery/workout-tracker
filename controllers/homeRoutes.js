@@ -1,59 +1,112 @@
 const router = require('express').Router();
 const { User, Workout } = require('../models');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/withAuth');
+const findUsername = require('../utils/findUsername');
 
-// router.get('/'), render login page
-// router.get('/', async (req, res) => {
-//     res.render('login');
-// });
-
-router.get('/calendar', async (req, res) => {
-    res.render('calendar');
+router.get('/', async (req, res) => {
+    res.redirect('/login');
 });
 
-// Render day view with all workout info for that day
-router.get('/calendar/day/:date', async (req, res) => {
+// Render login form
+router.get('/login', (req, res) => {
+    // If already logged in, redirect user to calendar
+    if (req.session.loggedIn) {
+        res.redirect('/calendar');
+        return;
+    } 
+    // If not logged in, render login form on welcome template
+    res.render('welcome', {
+        signup: false
+    });
+});
+
+// Render signup form
+router.get('/signup', (req, res) => {
+    // If already logged in, redirect user to calendar 
+    if (req.session.loggedIn) {
+        res.redirect('/calendar');
+        return;
+    } 
+    // If not logged in, render signup form on welcome template
+    res.render('welcome', {
+        signup: true
+    });
+});
+
+// Log out
+router.get('/logout', withAuth, (req, res) => {
+    // If already logged in, destroy session, redirect user to welcome page
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.redirect('/');
+        });
+    } else {
+        res.status(404).end();
+    }
+});
+
+// Render user's monthly calendar
+router.get('/calendar', withAuth, async (req, res) => {
+    const loggedInUsername = await findUsername(req);
+
+    res.render('calendar', {
+        username: loggedInUsername
+    });
+});
+
+// Render day view with all of user's workout info for that day
+router.get('/calendar/day/:date', withAuth, async (req, res) => {
     try {
         const workoutData = await Workout.findAll({
             where: {
-                date: req.params.date
+                date: req.params.date,
+                user_id: req.session.userId
             }
         });
 
         const workouts = workoutData.map((workout => workout.get({ plain: true })));
+        const loggedInUsername = await findUsername(req);
 
-        res.render('day', { workouts });
-        console.log(workouts);
+        res.render('day', { 
+            workouts,
+            date: req.params.date,
+            username: loggedInUsername
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
     }
 });
 
-// router.get('/day/:id', async (req, res) => {
-//     res.render('day')
-// });
+// Show form to add new workout
+router.get('/calendar/day/:date/workout', withAuth, async (req, res) => {
+    const loggedInUsername = await findUsername(req);
 
-router.get('/calendar/day/:date/workout', async (req, res) => {
     res.render('day', {
-        addWorkout: req.query.addWorkout
+        addWorkout: req.query.addWorkout,
+        date: req.params.date,
+        username: loggedInUsername
     });
 });
 
-// Show form to edit workout
-router.get('/calendar/day/:date/workout/:id', async (req, res) => {
+// Show form to edit the workout with same ID
+router.get('/calendar/day/:date/workout/:id', withAuth, async (req, res) => {
     try {
         const workoutData = await Workout.findByPk(req.params.id);
 
         console.log(workoutData);
 
         const workout = workoutData.get({ plain: true });
+        const loggedInUsername = await findUsername(req);
 
         res.render('day', {
             workout,
-            updateWorkout: req.query.updateWorkout
+            updateWorkout: req.query.updateWorkout,
+            date: req.params.date,
+            username: loggedInUsername
         });
     } catch (err) {
+        console.error(err);
         res.status(500).json(err);
     }
 });

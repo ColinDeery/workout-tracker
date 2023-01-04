@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const sess = {
-  secret: process.env.secret,
+  secret: process.env.SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: true,
@@ -22,7 +22,7 @@ const sess = {
   }),
 };
 
-// app.use(session(sess));
+app.use(session(sess));
 
 const hbs = exphbs.create({ helpers });
 

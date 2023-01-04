@@ -1,7 +1,14 @@
 <header> <a href="/calendar">View Calendar</a></header>
 <section class="day-view-card">
-    <section class="day-header">
-        <h2>Todays Date</h2>
+    <section class="day-header d-flex justify-content-between">
+        <h2>{{format_date date}}</h2>
+        <h2>Hello {{username}}!</h2>
+        <nav>
+            <ul>
+                <li> <a href="/calendar">Calendar</a> </li>
+                <li> <a href="/logout">Logout</a> </li>
+            </ul>
+        </nav>
     </section>
 
     <section class="day-view-body">
