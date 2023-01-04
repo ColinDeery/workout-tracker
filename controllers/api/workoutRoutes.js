@@ -5,6 +5,7 @@ const withAuth = require('../../utils/withAuth');
 // At /api/workout/, add new workout for given date
 router.post('/', withAuth, async (req, res) => {
     console.log('\nReached /api/workout/ \n');
+    req.body.user_id = req.session.userId;
     console.log(req.body);
     try {
         const workoutData = await Workout.create(req.body);
@@ -62,12 +63,14 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
+// At /api/workout/:date, return all of user's workouts for given date
 router.get('/:date', withAuth, async (req, res) => {
     console.log('Reached /api/workout/:date');
     try {
         const workoutData = await Workout.findAll({
             where: {
-                date: req.params.date
+                date: req.params.date,
+                user_id: req.session.userId
             }
         });
 

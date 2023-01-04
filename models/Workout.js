@@ -46,13 +46,14 @@ Workout.init(
         completed: {
             type: DataTypes.BOOLEAN
         },
-        // user_id: {
-        //     type: DataTypes.INTEGER,
-        //     references: {
-        //         model: 'user',
-        //         key: 'id',
-        //     },
-        // }
+        // Foreign key that references id in User model
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
+        }
     },
     {
         sequelize,

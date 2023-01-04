@@ -45,6 +45,7 @@ router.get('/logout', withAuth, (req, res) => {
     }
 });
 
+// Render user's monthly calendar
 router.get('/calendar', withAuth, async (req, res) => {
     const loggedInUsername = await findUsername(req);
 
@@ -53,12 +54,14 @@ router.get('/calendar', withAuth, async (req, res) => {
     });
 });
 
-// Render day view with all workout info for that day
+// Render day view with all of user's workout info for that day
 router.get('/calendar/day/:date', withAuth, async (req, res) => {
+    console.log(req.session.userId);
     try {
         const workoutData = await Workout.findAll({
             where: {
-                date: req.params.date
+                date: req.params.date,
+                user_id: req.session.userId
             }
         });
 
@@ -76,6 +79,7 @@ router.get('/calendar/day/:date', withAuth, async (req, res) => {
     }
 });
 
+// Show form to add workout
 router.get('/calendar/day/:date/workout', withAuth, async (req, res) => {
     const loggedInUsername = await findUsername(req);
 
