@@ -81,4 +81,21 @@ router.get('/:date', withAuth, async (req, res) => {
     }
 });
 
+// At /api/workout/, return all of user's workouts (regardless of date)
+router.get('/', withAuth, async (req, res) => {
+    console.log('\nReached GET req at /api/workout/');
+    try {
+        const workoutData = await Workout.findAll({
+            where: {
+                user_id: req.session.userId
+            }
+        });
+
+        res.status(200).json(workoutData);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json();
+    }
+});
+
 module.exports = router;
