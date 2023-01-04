@@ -5,7 +5,7 @@ const findUsername = require('../utils/findUsername');
 
 router.get('/', async (req, res) => {
     res.redirect('/login');
-})
+});
 
 // Render login form
 router.get('/login', (req, res) => {
@@ -14,20 +14,20 @@ router.get('/login', (req, res) => {
         res.redirect('/calendar');
         return;
     } 
-    // If not logged in, render login page
+    // If not logged in, render login form on welcome template
     res.render('welcome', {
         signup: false
     });
 });
 
-// Sign up route
+// Render signup form
 router.get('/signup', (req, res) => {
     // If already logged in, redirect user to calendar 
     if (req.session.loggedIn) {
         res.redirect('/calendar');
         return;
     } 
-    // If not logged in, render signup page
+    // If not logged in, render signup form on welcome template
     res.render('welcome', {
         signup: true
     });
@@ -56,7 +56,6 @@ router.get('/calendar', withAuth, async (req, res) => {
 
 // Render day view with all of user's workout info for that day
 router.get('/calendar/day/:date', withAuth, async (req, res) => {
-    console.log(req.session.userId);
     try {
         const workoutData = await Workout.findAll({
             where: {
@@ -79,7 +78,7 @@ router.get('/calendar/day/:date', withAuth, async (req, res) => {
     }
 });
 
-// Show form to add workout
+// Show form to add new workout
 router.get('/calendar/day/:date/workout', withAuth, async (req, res) => {
     const loggedInUsername = await findUsername(req);
 
@@ -90,7 +89,7 @@ router.get('/calendar/day/:date/workout', withAuth, async (req, res) => {
     });
 });
 
-// Show form to edit workout
+// Show form to edit the workout with same ID
 router.get('/calendar/day/:date/workout/:id', withAuth, async (req, res) => {
     try {
         const workoutData = await Workout.findByPk(req.params.id);
@@ -107,6 +106,7 @@ router.get('/calendar/day/:date/workout/:id', withAuth, async (req, res) => {
             username: loggedInUsername
         });
     } catch (err) {
+        console.error(err);
         res.status(500).json(err);
     }
 });

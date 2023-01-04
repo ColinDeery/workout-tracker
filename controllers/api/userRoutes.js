@@ -68,7 +68,7 @@ router.post('/signup', async (req, res) => {
         req.session.save(() => {
             req.session.loggedIn = true;
             req.session.userId = userData.id;
-            res.status(200).json(userData);
+            res.status(200).json({ user: userData, message: 'Successfully signed up!' });
             return;
         });
     } catch (err) {

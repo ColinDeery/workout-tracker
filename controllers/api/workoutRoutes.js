@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Workout } = require('../../models');
 const withAuth = require('../../utils/withAuth');
 
-// At /api/workout/, add new workout for given date
+// At /api/workout/, add user's new workout for given date
 router.post('/', withAuth, async (req, res) => {
     console.log('\nReached /api/workout/ \n');
     req.body.user_id = req.session.userId;
