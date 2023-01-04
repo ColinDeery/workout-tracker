@@ -2,7 +2,37 @@ const router = require('express').Router();
 const { User, Workout } = require('../models');
 // const withAuth = require('../utils/auth');
 
-// router.get('/'), render login page
+router.get('/', async (req, res) => {
+    // If already logged in, redirect user to /calendar
+    if (req.session.loggedIn) {
+        res.redirect('/calendar');
+        return;
+    } 
+    // If not logged in, redirect user to /login
+    res.redirect('/login');
+})
+
+// Render login form
+router.get('/login', (req, res) => {
+    // If already logged in, redirect user to calendar
+    if (req.session.loggedIn) {
+        res.redirect('/calendar');
+        return;
+    } 
+    // If not logged in, render login page
+    res.render('login');
+});
+
+// Sign up route
+router.get('/signup', (req, res) => {
+    // If already logged in, redirect user to calendar 
+    if (req.session.loggedIn) {
+        res.redirect('/calendar');
+        return;
+    } 
+    // If not logged in, render signup page
+    res.render('signup');
+});
 
 router.get('/calendar', async (req, res) => {
     res.render('calendar');
