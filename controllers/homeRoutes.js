@@ -3,22 +3,16 @@ const { User, Workout } = require('../models');
 // const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
-    // If already logged in, redirect user to /calendar
-    // if (req.session.loggedIn) {
-    //     res.redirect('/calendar');
-    //     return;
-    // } 
-    // If not logged in, redirect user to /login
     res.redirect('/login');
 })
 
 // Render login form
 router.get('/login', (req, res) => {
     // If already logged in, redirect user to calendar
-    // if (req.session.loggedIn) {
-    //     res.redirect('/calendar');
-    //     return;
-    // } 
+    if (req.session.loggedIn) {
+        res.redirect('/calendar');
+        return;
+    } 
     // If not logged in, render login page
     res.render('welcome', {
         signup: false
@@ -28,14 +22,26 @@ router.get('/login', (req, res) => {
 // Sign up route
 router.get('/signup', (req, res) => {
     // If already logged in, redirect user to calendar 
-    // if (req.session.loggedIn) {
-    //     res.redirect('/calendar');
-    //     return;
-    // } 
+    if (req.session.loggedIn) {
+        res.redirect('/calendar');
+        return;
+    } 
     // If not logged in, render signup page
     res.render('welcome', {
         signup: true
     });
+});
+
+// Log out
+router.get('/logout', (req, res) => {
+    // If already logged in, destroy session, redirect user to welcome page
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.redirect('/');
+        });
+    } else {
+        res.status(404).end();
+    }
 });
 
 router.get('/calendar', async (req, res) => {
@@ -62,10 +68,6 @@ router.get('/calendar/day/:date', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-// router.get('/day/:id', async (req, res) => {
-//     res.render('day')
-// });
 
 router.get('/calendar/day/:date/workout', async (req, res) => {
     res.render('day', {
