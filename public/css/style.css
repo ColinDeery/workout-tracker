@@ -1,7 +1,25 @@
+* {
+    font-family: 'Hind', sans-serif;
+
+}
+
+.header-font {
+    font-family: 'Mulish', sans-serif;
+}
+
+.view-label {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+nav {
+    text-align: right;
+}
 nav li {
     list-style: none;
     display: inline;
-    font-size: 2.2rem;
+    font-size: 1.2rem;
 }
 
 li a {
@@ -22,16 +40,24 @@ li a {
 .day-header {
     background-color: #0073FF;
     padding: 1%;
-    border: solid black;
+    /* border: solid black; */
 }
 
 .day-view-body {
     height: 100%;
     min-height: 100vh;
     /* margin: 4%; */
-    background-color: #ffffff !important;
+    background-color: #8da0b9 !important;
     padding: 20px !important;
-    border: solid black;
+    /* border: solid black; */
+}
+
+.workout-day-view-sections{
+    height: fit-content;
+    /* border: black solid;
+    border-radius: 5px;
+    border-width: 1px; */
+    /* background-color: #fff; */
 }
 
 .todays-workout {
@@ -39,7 +65,12 @@ li a {
     width: 50%;
     padding:10px;
     display: inline-flex;
-    border: solid black;
+    /* border: solid black; */
+    background-color: #fff;
+    /* border-width: 1px; */
+    margin-right: 5px;
+    border-radius: 8px;
+    padding: 5px;
     /* height: 100vh !important; */
     height: -webkit-fill-available !important;
 }
@@ -48,9 +79,15 @@ li a {
     min-height: 50vh;
     padding:10px;
     /* width: 48%; */
-    border: black;
+    /* border: black;
     border-style: none none solid solid;
+    border-width: 1px; */
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #fff;
     float: right;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
 
 #exercise-difficulty:first-letter {
@@ -61,19 +98,20 @@ li a {
     text-transform: uppercase;
 }
 
-.workout-day-view-sections{
-    height: fit-content;
-    border: black solid;
-}
-
 .exercises-info {
     min-height: 50vh;
     /* width: 48%; */
-    border: black;
+    /* border: black;
     border-style: none none none solid;
+    border-width: 1px; */
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #fff;
     float: right;
     padding:10px;
     height: -webkit-fill-available;
+    margin-left: 5px;
+    margin-top: 5px;
 }
 /* Exersice info api submit button */
 /* .generate{
@@ -88,26 +126,6 @@ li a {
     border: none;
 }
 
-.week-view-card {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-.week-view-header {
-    background-color: #0073FF;
-    padding: 1%;
-    border: solid black;
-    text-align: center;
-    margin-bottom: 4%;
-}
-
-.week-view-body {
-    width: 100%;
-    height: 300px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
 .date-card {
     width: 11%;
@@ -127,11 +145,11 @@ input, select {
 }
 
 .card {
-    border: solid 2px #0452B3;
+    /* border: solid 2px #0073FF; */
 }
 
 .card-header {
-    background-color: #0452B3;
+    background-color: #0073FF;
     color: white;
 }
 
