@@ -40,38 +40,41 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// // Sign up
-// router.post('/signup', async (req, res) => {
-//     try {
-//         const userData = await User.create({
-//             username: req.body.username,
-//             password: req.body.password
-//         });
+// Sign up new user
+router.post('/signup', async (req, res) => {
+    try {
+        // Check if username is already taken
+        const findUser = await User.findOne(
+            {
+                where: {
+                    username: req.body.username
+                }
+            }
+        );
 
-//         req.session.save(() => {
-//             req.session.loggedIn = true;
-//             req.session.userId = userData.id;
-//             console.log('\nSigned up\n');
-//             res.status(200).json(userData);
-//             return;
-//         });
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
+        // Found user with same username
+        if (findUser !== null) {
+            res.status(400).json(findUser);
+            return;
+        }
 
-// // Log out
-// router.post('/logout', (req, res) => {
-//     console.log('\nReached logout route\n');
-//     if (req.session.loggedIn) {
-//         req.session.destroy(() => {
-//             console.log('\nLogging out\n');
-//             res.redirect('/');
-//         });
-//     } else {
-//         res.status(404).end();
-//     }
-// });
+        // Create new User with provided username and password (if username is unique)
+        const userData = await User.create({
+            username: req.body.username,
+            password: req.body.password
+        });
+
+        // Set loggedIn to true
+        req.session.save(() => {
+            req.session.loggedIn = true;
+            req.session.userId = userData.id;
+            res.status(200).json(userData);
+            return;
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
