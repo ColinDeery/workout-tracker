@@ -36,34 +36,17 @@
 
             <section class="d-flex flex-column col-6">
                 <article class="previous-workout">
-                    <p>Previous Workout:</p>
-                    <h4>Category: {{prevWorkout.category}}</h4>
-                    <h4>Date: {{format_date prevWorkout.date}}</h4>
-
-                    {{#if prevWorkout.exercise}}
-                    <p>Exercise: {{prevWorkout.exercise}}</p>
-                    {{/if}}
-
-                    {{#if prevWorkout.duration}}
-                    <p>Duration: {{prevWorkout.duration}}</p>
-                    {{/if}}
-
-                    {{#if prevWorkout.distance}}
-                    <p>Distance: {{prevWorkout.distance}}</p>
-                    {{/if}}
-
-                    {{#if prevWorkout.sets}}
-                    <p>Sets: {{prevWorkout.sets}}</p>
-                    {{/if}}
-
-                    {{#if prevWorkout.reps}}
-                    <p>Reps: {{prevWorkout.reps}}</p>
-                    {{/if}}
-
-                    {{#if prevWorkout.weight}}
-                    <p>Weight: {{prevWorkout.weight}}</p>
-                    {{/if}}
+                    <h5>Previous Workouts:</h5>
                     
+                    {{#if prevWorkout.category}}
+                    <h4>Category: {{prevWorkout.category}}</h4>
+                    {{/if}}
+
+                    {{#if prevWorkout.date}}
+                    <h4>Date: {{format_date prevWorkout.date}}</h4>
+                    {{/if}}
+
+                    <div id="chartDiv" style="width:50%; height:300px; margin:0 auto;"></div>
                 </article>
 
                 <article class="exercises-info">
@@ -96,5 +79,5 @@
         </section>
     </section>
 </section>
-
+<script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
 <script src="/js/day-view.js"></script>
