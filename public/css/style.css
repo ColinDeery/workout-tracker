@@ -3,6 +3,10 @@
 
 }
 
+.login-body {
+    background-color: #8da0b9;
+}
+
 .header-font {
     font-family: 'Mulish', sans-serif;
 }
@@ -52,6 +56,9 @@ li a {
     /* border: solid black; */
 }
 
+.day-view-cards-header h3 {
+    font-size: 1.2rem;
+}
 .workout-day-view-sections{
     height: fit-content;
     /* border: black solid;
@@ -70,7 +77,8 @@ li a {
     /* border-width: 1px; */
     margin-right: 5px;
     border-radius: 8px;
-    padding: 5px;
+    box-shadow: 1px 1px 1px;
+    padding: 10px;
     /* height: 100vh !important; */
     height: -webkit-fill-available !important;
 }
@@ -83,7 +91,8 @@ li a {
     border-style: none none solid solid;
     border-width: 1px; */
     border-radius: 8px;
-    padding: 5px;
+    box-shadow: 1px 1px 1px;
+    padding: 10px;
     background-color: #fff;
     float: right;
     margin-left: 5px;
@@ -105,7 +114,8 @@ li a {
     border-style: none none none solid;
     border-width: 1px; */
     border-radius: 8px;
-    padding: 5px;
+    box-shadow: 1px 1px 1px;
+    padding: 10px;
     background-color: #fff;
     float: right;
     padding:10px;
@@ -209,6 +219,9 @@ li {
     padding-top: 10px;
 }
 
+.exercise-text {
+    font-size: 15px;
+}
 .day-of-week,
 .days-grid {
     display: grid;
@@ -309,3 +322,18 @@ li {
     -ms-user-select: none;
     user-select: none;
 }
+
+/* 
+@media screen and (max-width: 992px) {
+   
+    .welcome-header-text {
+        font-size: 35px;
+    }
+  }
+  
+
+  @media screen and (max-width: 768px) {
+    .welcome-header-text {
+        font-size: 28px;
+    }
+  } */
