@@ -1,10 +1,10 @@
 <section class="day-view-card">
     <section class="day-header d-flex justify-content-between">
-        <h2>{{format_date date}}</h2>
-        <h2>Hello {{username}}!</h2>
+        <h2 class="view-label">{{format_date date}}</h2>
+        <h2 class="header-font">{{username}}'s Daily Workout Plan <i class="fa-solid fa-person-running"></i></h2>
         <nav>
-            <ul>
-                <li> <a href="/calendar">Calendar</a> </li>
+            <ul class="d-flex flex-column">
+                <li> <a href="/calendar">Monthly View</a> </li>
                 <li> <a href="/logout">Logout</a> </li>
             </ul>
         </nav>
