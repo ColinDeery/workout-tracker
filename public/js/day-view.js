@@ -230,9 +230,6 @@ const format_date = (date) => {
 }
 // Fetch previous workouts
 function fetchPreviousWorkout() {
-    // const response = await fetch(`/api/workout`);
-    // const data = response.json();
-    // console.log(data[0]);
 
     fetch(`/api/workout`)
         .then((response) => {
@@ -252,8 +249,8 @@ function fetchPreviousWorkout() {
                 }
             }
 
-            console.log(prevCompletedWorkout);
-            console.log(prevCompletedWorkout[0].duration);
+            console.log('Prev workout 1: ' + prevCompletedWorkout[0].duration + ' minutes');
+            console.log('Prev workout 2: ' + prevCompletedWorkout[1].duration + ' minutes');
 
             if (prevCompletedWorkout.length > 1) {
                 JSC.Chart('chartDiv', {
@@ -261,8 +258,10 @@ function fetchPreviousWorkout() {
                     series: [
                         {
                             points: [
-                                { x: `${prevCompletedWorkout[0].category} ${format_date(prevCompletedWorkout[0].date)}`, y: `${parseInt(prevCompletedWorkout[0].duration)}` },
-                                { x: `${prevCompletedWorkout[1].category} ${format_date(prevCompletedWorkout[1].date)}`, y: `${parseInt(prevCompletedWorkout[1].duration)}` },
+                                { x: `${prevCompletedWorkout[0].category} ${format_date(prevCompletedWorkout[0].date)}`,
+                                  y: parseInt(prevCompletedWorkout[0].duration) },
+                                { x: `${prevCompletedWorkout[1].category} ${format_date(prevCompletedWorkout[1].date)}`, 
+                                  y: parseInt(prevCompletedWorkout[1].duration) },
                             ]
                         }
                     ]

@@ -254,6 +254,7 @@ li {
 
 .calendar-day--today {
     padding-top: 4px;
+    border: solid #0073FF 2px;
 }
 
 .calendar-day--today>span {

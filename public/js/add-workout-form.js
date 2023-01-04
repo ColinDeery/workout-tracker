@@ -41,6 +41,7 @@ const submitWorkoutHandler = async (event) => {
         requestBody.distance = document.querySelector('#cardio-distance').value;
     } else if (categoryChoice === 'Strength Training') {
         requestBody.exercise = document.querySelector('#strength-exercise').value;
+        requestBody.duration = document.querySelector('#strength-duration').value;
         requestBody.sets = document.querySelector('#sets').value;
         if (requestBody.sets === '') {
             requestBody.sets = null;

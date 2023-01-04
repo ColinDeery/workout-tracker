@@ -1,4 +1,3 @@
-<header> <a href="/calendar">View Calendar</a></header>
 <section class="day-view-card">
     <section class="day-header d-flex justify-content-between">
         <h2 class="view-label">{{format_date date}}</h2>
@@ -38,13 +37,13 @@
                 <article class="previous-workout">
                     <h5>Previous Workouts:</h5>
                     
-                    {{#if prevWorkout.category}}
+                    {{!-- {{#if prevWorkout.category}}
                     <h4>Category: {{prevWorkout.category}}</h4>
                     {{/if}}
 
                     {{#if prevWorkout.date}}
                     <h4>Date: {{format_date prevWorkout.date}}</h4>
-                    {{/if}}
+                    {{/if}} --}}
 
                     <div id="chartDiv" style="width:50%; height:300px; margin:0 auto;"></div>
                 </article>
