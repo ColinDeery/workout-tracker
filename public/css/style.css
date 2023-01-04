@@ -64,10 +64,12 @@ li a {
     /* min-height: 80vh; */
     width: 50%;
     display: inline-flex;
-    border: solid black;
+    /* border: solid black; */
     background-color: #fff;
-    border-width: 1px;
-    margin-right: 3px;
+    /* border-width: 1px; */
+    margin-right: 5px;
+    border-radius: 8px;
+    padding: 5px;
     /* height: 100vh !important; */
     height: -webkit-fill-available !important;
 }
@@ -78,10 +80,12 @@ li a {
     /* border: black;
     border-style: none none solid solid;
     border-width: 1px; */
+    border-radius: 8px;
+    padding: 5px;
     background-color: #fff;
     float: right;
-    margin-left: 3px;
-    margin-bottom: 3px;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
 
 #exercise-difficulty:first-letter {
@@ -98,12 +102,14 @@ li a {
     /* border: black;
     border-style: none none none solid;
     border-width: 1px; */
+    border-radius: 8px;
+    padding: 5px;
     background-color: #fff;
     float: right;
     padding:10px;
     height: -webkit-fill-available;
-    margin-left: 3px;
-    margin-top: 3px;
+    margin-left: 5px;
+    margin-top: 5px;
 }
 /* Exersice info api submit button */
 /* .generate{

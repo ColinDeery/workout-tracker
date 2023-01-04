@@ -15,20 +15,20 @@
             <article class="todays-workout scrollable">
                 <section class="d-flex flex-column col-10 content-wrapper">
                     <section class="content">
-                    {{!-- Display Add A Workout btn if add/edit-workout-form not displayed --}}
-                    {{#unless addWorkout}}
+                        {{!-- Display Add A Workout btn if add/edit-workout-form not displayed --}}
+                        {{#unless addWorkout}}
                         {{#unless updateWorkout}}
-                        <button id="add-workout" class="btn btn-secondary mb-2 rounded-0">Add A Workout</button>
+                        <button id="add-workout" class="btn btn-secondary mb-2">Add A Workout</button>
                         {{/unless}}
-                    {{/unless}}
-                    
-                    {{#if addWorkout}}
+                        {{/unless}}
+
+                        {{#if addWorkout}}
                         {{> add-workout-form}}
-                    {{else if updateWorkout}}
+                        {{else if updateWorkout}}
                         {{> edit-workout}}
-                    {{else}}
+                        {{else}}
                         {{> workout-info}}
-                    {{/if}}
+                        {{/if}}
                     </section>
                 </section>
             </article>
@@ -37,7 +37,7 @@
                 <article class="previous-workout">
                     <p>Insert previous Workouts here</p>
                 </article>
-            
+
                 <article class="exercises-info">
                     <form id="suggested-workout-options">
                         <label for="type">Select workout type:</label>
