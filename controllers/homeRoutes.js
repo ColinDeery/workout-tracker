@@ -19,7 +19,10 @@ router.get('/calendar/day/:date', async (req, res) => {
 
         const workouts = workoutData.map((workout => workout.get({ plain: true })));
 
-        res.render('day', { workouts });
+        res.render('day', { 
+            workouts,
+            date: req.params.date
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
@@ -32,7 +35,8 @@ router.get('/calendar/day/:date', async (req, res) => {
 
 router.get('/calendar/day/:date/workout', async (req, res) => {
     res.render('day', {
-        addWorkout: req.query.addWorkout
+        addWorkout: req.query.addWorkout,
+        date: req.params.date
     });
 });
 
@@ -47,7 +51,8 @@ router.get('/calendar/day/:date/workout/:id', async (req, res) => {
 
         res.render('day', {
             workout,
-            updateWorkout: req.query.updateWorkout
+            updateWorkout: req.query.updateWorkout,
+            date: req.params.date
         });
     } catch (err) {
         res.status(500).json(err);
