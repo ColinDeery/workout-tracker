@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Workout } = require('../models');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/withAuth');
 
 router.get('/', async (req, res) => {
     res.redirect('/login');
@@ -33,7 +33,7 @@ router.get('/signup', (req, res) => {
 });
 
 // Log out
-router.get('/logout', (req, res) => {
+router.get('/logout', withAuth, (req, res) => {
     // If already logged in, destroy session, redirect user to welcome page
     if (req.session.loggedIn) {
         req.session.destroy(() => {
@@ -44,12 +44,12 @@ router.get('/logout', (req, res) => {
     }
 });
 
-router.get('/calendar', async (req, res) => {
+router.get('/calendar', withAuth, async (req, res) => {
     res.render('calendar');
 });
 
 // Render day view with all workout info for that day
-router.get('/calendar/day/:date', async (req, res) => {
+router.get('/calendar/day/:date', withAuth, async (req, res) => {
     try {
         const workoutData = await Workout.findAll({
             where: {
@@ -69,7 +69,7 @@ router.get('/calendar/day/:date', async (req, res) => {
     }
 });
 
-router.get('/calendar/day/:date/workout', async (req, res) => {
+router.get('/calendar/day/:date/workout', withAuth, async (req, res) => {
     res.render('day', {
         addWorkout: req.query.addWorkout,
         date: req.params.date
@@ -77,7 +77,7 @@ router.get('/calendar/day/:date/workout', async (req, res) => {
 });
 
 // Show form to edit workout
-router.get('/calendar/day/:date/workout/:id', async (req, res) => {
+router.get('/calendar/day/:date/workout/:id', withAuth, async (req, res) => {
     try {
         const workoutData = await Workout.findByPk(req.params.id);
 

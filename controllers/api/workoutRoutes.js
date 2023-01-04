@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const { User, Workout } = require('../../models');
-// // Custom middleware to check whether user is logged in or not
-// const withAuth = require('../utils/withAuth');
+const withAuth = require('../../utils/withAuth');
 
 // At /api/workout/, add new workout for given date
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     console.log('\nReached /api/workout/ \n');
     console.log(req.body);
     try {
@@ -17,7 +16,7 @@ router.post('/', async (req, res) => {
 });
 
 // At /api/workout/:id, delete user's workout with same ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const workoutData = await Workout.destroy({
             where: {
@@ -38,7 +37,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 // At /api/workout/:id, update user's workout with same ID
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     console.log('\n Reached /api/workout/:id');
     
     try {
@@ -63,7 +62,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.get('/:date', async (req, res) => {
+router.get('/:date', withAuth, async (req, res) => {
     console.log('Reached /api/workout/:date');
     try {
         const workoutData = await Workout.findAll({
