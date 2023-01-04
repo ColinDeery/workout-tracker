@@ -3,6 +3,9 @@ const { User, Workout } = require('../models');
 // const withAuth = require('../utils/auth');
 
 // router.get('/'), render login page
+// router.get('/', async (req, res) => {
+//     res.render('login');
+// });
 
 router.get('/calendar', async (req, res) => {
     res.render('calendar');
@@ -20,6 +23,7 @@ router.get('/calendar/day/:date', async (req, res) => {
         const workouts = workoutData.map((workout => workout.get({ plain: true })));
 
         res.render('day', { workouts });
+        console.log(workouts);
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
