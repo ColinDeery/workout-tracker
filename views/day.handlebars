@@ -36,14 +36,34 @@
 
             <section class="d-flex flex-column col-6">
                 <article class="previous-workout">
-                    <h4>Insert previous {{category}} here</h4>
-                    <p>Insert previous {{exercise}} here</p>
-                    <p>Insert previous {{duration}} here</p>
-                    <p>Insert previous {{distance}} here</p>
-                    <p>Insert previous {{sets}} here</p>
-                    <p>Insert previous {{reps}} here</p>
-                    <p>Insert previous {{weight}} here</p>
-                    <p>Insert previous {{date}} here</p>
+                    <p>Previous Workout:</p>
+                    <h4>Category: {{prevWorkout.category}}</h4>
+                    <h4>Date: {{format_date prevWorkout.date}}</h4>
+
+                    {{#if prevWorkout.exercise}}
+                    <p>Exercise: {{prevWorkout.exercise}}</p>
+                    {{/if}}
+
+                    {{#if prevWorkout.duration}}
+                    <p>Duration: {{prevWorkout.duration}}</p>
+                    {{/if}}
+
+                    {{#if prevWorkout.distance}}
+                    <p>Distance: {{prevWorkout.distance}}</p>
+                    {{/if}}
+
+                    {{#if prevWorkout.sets}}
+                    <p>Sets: {{prevWorkout.sets}}</p>
+                    {{/if}}
+
+                    {{#if prevWorkout.reps}}
+                    <p>Reps: {{prevWorkout.reps}}</p>
+                    {{/if}}
+
+                    {{#if prevWorkout.weight}}
+                    <p>Weight: {{prevWorkout.weight}}</p>
+                    {{/if}}
+                    
                 </article>
 
                 <article class="exercises-info">
