@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Workout } = require('../models');
 const withAuth = require('../utils/withAuth');
+const findUsername = require('../utils/findUsername');
 
 router.get('/', async (req, res) => {
     res.redirect('/login');
@@ -45,7 +46,11 @@ router.get('/logout', withAuth, (req, res) => {
 });
 
 router.get('/calendar', withAuth, async (req, res) => {
-    res.render('calendar');
+    const loggedInUsername = await findUsername(req);
+
+    res.render('calendar', {
+        username: loggedInUsername
+    });
 });
 
 // Render day view with all workout info for that day
@@ -58,10 +63,12 @@ router.get('/calendar/day/:date', withAuth, async (req, res) => {
         });
 
         const workouts = workoutData.map((workout => workout.get({ plain: true })));
+        const loggedInUsername = await findUsername(req);
 
         res.render('day', { 
             workouts,
-            date: req.params.date
+            date: req.params.date,
+            username: loggedInUsername
         });
     } catch (err) {
         console.error(err);
@@ -70,9 +77,12 @@ router.get('/calendar/day/:date', withAuth, async (req, res) => {
 });
 
 router.get('/calendar/day/:date/workout', withAuth, async (req, res) => {
+    const loggedInUsername = await findUsername(req);
+
     res.render('day', {
         addWorkout: req.query.addWorkout,
-        date: req.params.date
+        date: req.params.date,
+        username: loggedInUsername
     });
 });
 
@@ -84,11 +94,13 @@ router.get('/calendar/day/:date/workout/:id', withAuth, async (req, res) => {
         console.log(workoutData);
 
         const workout = workoutData.get({ plain: true });
+        const loggedInUsername = await findUsername(req);
 
         res.render('day', {
             workout,
             updateWorkout: req.query.updateWorkout,
-            date: req.params.date
+            date: req.params.date,
+            username: loggedInUsername
         });
     } catch (err) {
         res.status(500).json(err);
