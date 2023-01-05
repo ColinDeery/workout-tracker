@@ -1,25 +1,29 @@
 {{!-- Login form --}}
 <section class="col-4 mt-4">
     <section id="form-card" class="card d-flex flex-column justify-content-center">
-
         <section class="card-header">
             <h2 class="header-font" id="form-card-header">Login</h2>
         </section>
+        <form class="card-body login-form d-flex flex-column inline">
+            <div class="input-icons d-flex flex-column">
+                <label for="username-login">Enter your Username:</label>
+                <div>
+                    <i class="bi bi-person-square icon" style="font-size: 30px"></i>
+                    <input type="text" id="username-login" class="form-control-lg input-field" />
+                </div>
 
-        <form class="card-body login-form d-flex flex-column">
-            <label for="username-login">Enter your Username:</label>
-            <input type="text" id="username-login" class="form-control-lg" />
+                <label for="password-login">Enter your Password:</label>
+                <div>
+                    <i class="bi bi-key-fill icon" style="font-size: 30px"></i>
+                    <input type="password" id="password-login" class="form-control-lg input-field" />
+                </div>
+            </div>
 
-            <label for="password-login">Enter your Password:</label>
-            <input type="password" id="password-login" class="form-control-lg" />
-
+            </div>
             <br>
             <button class="btn btn-secondary" type="submit">Login!</button>
-
             <p class="mt-2"> <a href="/signup" class="login-signup-anchor">Sign up instead</a> </p>
         </form>
-
     </section>
 </section>
-
 <script src="./js/login.js"></script>
