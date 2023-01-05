@@ -11,7 +11,13 @@ const submitBtnEl = document.querySelector(".generate")
 const clearBtnEl = document.querySelector(".clear")
 const formEl = document.querySelector("#suggested-workout-options")
 const populatedDataEl = document.querySelector(".populated-data")
-console.log(apiKey);
+
+dayjs.extend(window.dayjs_plugin_weekday);
+dayjs.extend(window.dayjs_plugin_weekOfYear);
+
+const arrURL = document.location.href.split('/');
+const currentDate = arrURL[5];
+console.log('Current Date: ' + currentDate);
 
 
 //Submit button logic to select workout type and call api
@@ -20,7 +26,6 @@ submitBtnEl.addEventListener("click", function (event) {
     populatedDataEl.classList.remove("hide");
     event.preventDefault()
     // let type = typeEl.options[typeEl.selectedIndex].text;
-    console.log(type);
     fetchApi();
 })
 //Button to clear data and repopulate form
@@ -125,12 +130,7 @@ const createExercises = function (data) {
 }
 
 const addWorkoutHandler = (event) => {
-    console.log('Add Workout button clicked');
-    console.log(document.location.href);
-    const arrURL = document.location.href.split('/');
-    const date = arrURL[arrURL.length - 1];
-    console.log(date);
-    document.location.replace(`/calendar/day/${date}/workout?addWorkout=true`);
+    document.location.replace(`/calendar/day/${currentDate}/workout?addWorkout=true`);
 }
 
 // Only add event listener if 'Add Workout' button exists
@@ -228,69 +228,94 @@ const format_date = (date) => {
 
     return dateObj.toLocaleString("en-US", options);
 }
-// Fetch previous workouts
-function fetchPreviousWorkout() {
-    // const response = await fetch(`/api/workout`);
-    // const data = response.json();
-    // console.log(data[0]);
 
-    fetch(`/api/workout`)
-        .then((response) => {
+async function fetchPastWeek() {
+    const xValues = []; // dates
+    const yValues = []; // totalDurations
+    let totalDurationWeek = 0;
 
-            return response.json();
-        }).then((data) => {
-            console.log(data);
-            const sortedWorkouts = data.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
-            console.log(sortedWorkouts);
+    // Start with current date and subtract 1 to get previous date
+    let previousDay = dayjs(`${currentDate}`).subtract(1, "date");
 
-            let prevCompletedWorkout = []
-
-            for (let i = 0; i < sortedWorkouts.length; i++) {
-                if (sortedWorkouts[i].completed) {
-                    console.log(sortedWorkouts[i]);
-                    prevCompletedWorkout.push(sortedWorkouts[i])
-                }
+    // Start with current date, loop backwards through the week (past 7 days)
+    for (let i = 0; i < 7; i++) {
+        const previousDayFormatted = dayjs(`${previousDay.year()}-${previousDay.month()+1}-${previousDay.date()}`).format('YYYY-MM-DD');
+    
+        // Fetch user's workouts for the inputted date (data = array of workouts)
+        const response = await fetch(`/api/workout/${previousDayFormatted}`);
+        const data = await response.json();
+        console.log(data);
+    
+        // Sum up total duration of all completed workouts for this day
+        let totalDurationDay = 0;
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].completed) {
+                totalDurationDay = totalDurationDay + data[i].duration;
             }
+        }
+        console.log(`${previousDayFormatted}: ${totalDurationDay}`);
 
-            console.log(prevCompletedWorkout);
-            console.log(prevCompletedWorkout[0].duration);
+        xValues.push(dayjs(`${previousDayFormatted}`).format('M/D/YYYY'));
+        yValues.push(totalDurationDay);
 
-            if (prevCompletedWorkout.length > 1) {
-                JSC.Chart('chartDiv', {
-                    type: 'horizontal column',
-                    series: [
-                        {
-                            points: [
-                                { x: `${prevCompletedWorkout[0].category} ${format_date(prevCompletedWorkout[0].date)}`, y: `${parseInt(prevCompletedWorkout[0].duration)}` },
-                                { x: `${prevCompletedWorkout[1].category} ${format_date(prevCompletedWorkout[1].date)}`, y: `${parseInt(prevCompletedWorkout[1].duration)}` },
-                            ]
-                        }
-                    ]
-                });
-            } if (prevCompletedWorkout.length == 1) {
-                JSC.Chart('chartDiv', {
-                    type: 'horizontal column',
-                    series: [
-                        {
-                            points: [
-                                { x: `${prevCompletedWorkout[0].category} ${format_date(prevCompletedWorkout[0].date)}`, y: 50 },
-                            ]
-                        }
-                    ]
-                });
-            } 
-            if (prevCompletedWorkout.length < 1) {
-                const noPrevWorkoutsAlert = document.createElement("h3");
-                noPrevWorkoutsAlert.textContent = "No Prior Workouts Found";
-                previousWorkoutSection.append(noPrevWorkoutsAlert);
+        totalDurationWeek = totalDurationWeek + totalDurationDay;
+
+        // Subtract 1 from previousDay to prepare for next for-loop iteration
+        previousDay = dayjs(`${previousDayFormatted}`).subtract(1, "date");
+    }
+
+    // Render bar chart showing total workout duration/day in past week
+    Chart.defaults.global.title.fontSize = 20;
+    Chart.defaults.global.legend.fontSize = 20;
+    new Chart("myChart", {
+        type: "horizontalBar",
+        data: {
+            labels: xValues.reverse(),
+            datasets: [{
+                backgroundColor: "#0073FF",
+                data: yValues.reverse()
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Total Workout Duration Per Day In Past Week"
+            },
+            legend: { display: false },
+
+            scales: {
+                xAxes: [{
+                    ticks: { 
+                        min: 0,
+                        fontSize: 15
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Duration (minutes)',
+                        fontSize: 20
+                    }
+                }],
+                yAxes: [{
+                    ticks: { 
+                        fontSize: 15
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Dates',
+                        fontSize: 20
+                    }
+                }]
             }
+        }
+    });
 
-            
-
-            
-
-        });
+    // If there are no completed workouts for past week, display reminder to get moving under chart
+    if (totalDurationWeek === 0) {
+        const idleWarning = document.createElement('h3');
+        idleWarning.classList.add('align-self-center','mt-3');
+        idleWarning.innerHTML = '<i style="color: red">Reminder to get moving!<i>';
+        previousWorkoutSection.appendChild(idleWarning);
+    }
 }
 
-
-fetchPreviousWorkout();
+fetchPastWeek();

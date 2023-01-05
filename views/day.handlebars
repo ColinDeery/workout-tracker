@@ -38,19 +38,9 @@
 
             <section class="d-flex flex-column col-6">
                 <article class="previous-workout d-flex flex-column">
-                    <section class="day-view-cards-header">
-                        <h3>Previous Workouts</h3>
-                    </section>
+                    <h5>Previous Workouts:</h5>
+                    <canvas id="myChart" style="width:100%; max-width:800px; margin:0 auto;"></canvas>
 
-                    {{#if prevWorkout.category}}
-                    <h4>Category: {{prevWorkout.category}}</h4>
-                    {{/if}}
-
-                    {{#if prevWorkout.date}}
-                    <h4>Date: {{format_date prevWorkout.date}}</h4>
-                    {{/if}}
-
-                    <div id="chartDiv" style="width:50%; height:300px; margin:0 auto;"></div>
                 </article>
 
                 <article class="exercises-info d-flex flex-column">
@@ -58,6 +48,7 @@
                         <h3>Workout Suggestions</h3>
                     </section>
                     <form id="suggested-workout-options">
+                        <h5><i>Need a workout idea?</i></h5>
                         <label for="type">Select workout type:</label>
                         <select name="type" id="type">
                             <option value="cardio">Cardio</option>
@@ -86,5 +77,10 @@
         </section>
     </section>
 </section>
-<script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/weekday.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/weekOfYear.js"></script>
 <script src="/js/day-view.js"></script>

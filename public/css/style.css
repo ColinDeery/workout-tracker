@@ -1,8 +1,19 @@
 /* Styles across whole site */
 * {
     font-family: 'Hind', sans-serif;
-
+    margin: 0;
+    padding: 0;
 }
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+
 
 html {
     height: 100%;
@@ -28,6 +39,10 @@ nav li {
     list-style: none;
     display: inline;
     font-size: 1.2rem;
+}
+
+nav a:hover {
+    color: black;
 }
 
 li a {
@@ -139,6 +154,7 @@ li a {
     float: right;
     margin-left: 5px;
     margin-bottom: 5px;
+    height: fit-content;
 }
 
 #exercise-difficulty:first-letter {
@@ -308,6 +324,12 @@ li {
     height: var(--day-label-size);
 }
 
+.calendar-day:hover {
+    cursor: pointer;
+    /* background-color: rgb(163, 186, 203); */
+    border:rgb(0, 0, 0) solid 1px;
+}
+
 .calendar-day--not-current {
     background-color: var(--grey-100);
     color: var(--grey-300);
@@ -315,6 +337,7 @@ li {
 
 .calendar-day--today {
     padding-top: 4px;
+    border: solid #0073FF 2px;
 }
 
 .calendar-day--today>span {
