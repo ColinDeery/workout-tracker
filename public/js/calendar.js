@@ -40,6 +40,10 @@ function createCalendar(year = INITIAL_YEAR, month = INITIAL_MONTH) {
         new Date(year, month - 1)
     ).format("MMMM YYYY");
 
+    // document.getElementById("present-month-selector").innerText = dayjs(
+    //     new Date(year, month -1)
+    // ).format("MMMM YYYY");
+
     removeAllDayElements(calendarDaysElement);
 
     currentMonthDays = createDaysForCurrentMonth(
