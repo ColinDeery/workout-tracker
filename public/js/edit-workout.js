@@ -1,22 +1,17 @@
 // If user clicks on minus btn, delete that workout
 const delWorkoutHandler = async (event) => {
-    console.log('Delete button clicked');
-
     // Find closest parent element with 'card' class
     // Grab ID of the workout card that was clicked on
     const workoutID = event.target.closest('.card').id.split('-')[1];
-    console.log(workoutID);
 
     const response = await fetch(`/api/workout/${workoutID}`, {
         method: 'DELETE'
     });
 
-    console.log(document.location.href);
     const arrURL = document.location.href.split('/');
     const date = arrURL[arrURL.length - 1];
 
     if (response.ok) {
-        console.log('Deleted workout successfully!');
         document.location.replace(`/calendar/day/${date}`);
     } else {
         alert('Failed to delete workout.');
@@ -25,11 +20,8 @@ const delWorkoutHandler = async (event) => {
 
 // If user clicks on pen icon, update that workout
 const editWorkoutHandler = async (event) => {
-    console.log('Edit workout button clicked');
-
     // Grab ID of the workout card that was clicked on
     const workoutID = event.target.closest('.card').id.split('-')[1];
-    console.log(workoutID);
 
     const arrURL = document.location.href.split('/');
     const date = arrURL[arrURL.length - 1];
@@ -39,8 +31,6 @@ const editWorkoutHandler = async (event) => {
 
 // If user clicked on Mark Complete btn, show green checkmark
 const toggleToComplete = async (event) => {
-    console.log('Mark Complete button clicked');
-
     // Grab ID of the workout card that was clicked on
     const workoutID = event.target.closest('.card').id.split('-')[1];
 
@@ -54,7 +44,6 @@ const toggleToComplete = async (event) => {
     });
 
     if (response.ok) {
-        console.log('Marked workout complete!');
         location.reload();
     } else {
         alert('Failed to mark workout complete.');
@@ -63,8 +52,6 @@ const toggleToComplete = async (event) => {
 
 // If user clicked on green checkmark icon, show Mark Complete btn
 const toggleToIncomplete = async (event) => {
-    console.log('Green checkmark clicked');
-
     // Grab ID of the workout card that was clicked on
     const workoutID = event.target.closest('.card').id.split('-')[1];
 
@@ -78,7 +65,6 @@ const toggleToIncomplete = async (event) => {
     });
 
     if (response.ok) {
-        console.log('Marked workout incomplete');
         location.reload();
     } else {
         alert('Failed to mark workout incomplete.');

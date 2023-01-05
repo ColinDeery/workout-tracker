@@ -16,7 +16,7 @@ dayjs.extend(window.dayjs_plugin_weekday);
 dayjs.extend(window.dayjs_plugin_weekOfYear);
 
 const arrURL = document.location.href.split('/');
-const currentDate = arrURL[arrURL.length - 1];
+const currentDate = arrURL[5];
 console.log('Current Date: ' + currentDate);
 
 
@@ -26,7 +26,6 @@ submitBtnEl.addEventListener("click", function (event) {
     populatedDataEl.classList.remove("hide");
     event.preventDefault()
     // let type = typeEl.options[typeEl.selectedIndex].text;
-    console.log(type);
     fetchApi();
 })
 //Button to clear data and repopulate form

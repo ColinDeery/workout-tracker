@@ -15,7 +15,6 @@ const signupFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            console.log('Signed up successfully!');
             document.location.replace('/calendar');
         } else {
             if (response.status === 400) {

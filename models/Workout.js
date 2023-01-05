@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Workout extends Model { }
@@ -15,9 +14,6 @@ Workout.init(
         category: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        type: {
-            type: DataTypes.STRING,
         },
         exercise: {
             type: DataTypes.STRING,

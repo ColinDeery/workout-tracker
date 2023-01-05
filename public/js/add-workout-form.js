@@ -14,23 +14,32 @@ categoryEl.onchange = function () {
     yogaForm.style.display = 'none';
     recoveryForm.style.display = 'none';
 
+    // Disable required attribute initially
+    document.querySelector('#cardio-duration').required = false;
+    document.querySelector('#strength-duration').required = false;
+    document.querySelector('#yoga-duration').required = false;
+    document.querySelector('#recovery-duration').required = false;
+
     // Check which category user selected and display that corresponding form
     categoryChoice = categoryEl.options[categoryEl.selectedIndex].text;    
     if (categoryChoice === 'Cardio') {  
         cardioForm.style.display = 'block'; 
+        document.querySelector('#cardio-duration').required = true;
     } else if (categoryChoice === 'Strength Training') {
         strengthForm.style.display = 'block';
+        document.querySelector('#strength-duration').required = true;
     } else if (categoryChoice === 'Yoga/Pilates') {
         yogaForm.style.display = 'block';
+        document.querySelector('#yoga-duration').required = true;
     } else if (categoryChoice === 'Recovery/Stretching') {
         recoveryForm.style.display = 'block';
+        document.querySelector('#recovery-duration').required = true;
     }
 }
 
 // Create POST request to add workout info to planner
 const submitWorkoutHandler = async (event) => {
     event.preventDefault();
-    console.log('Complete button clicked');
 
     // Set the form input values in the appropriate keys on request body
     const requestBody = {};
@@ -60,7 +69,6 @@ const submitWorkoutHandler = async (event) => {
     }
 
     // Add current date to requestBody
-    console.log(document.location.href);
     const arrURL = document.location.href.split('/');
     const date = arrURL[arrURL.length - 2];
     requestBody.date = date;
@@ -72,7 +80,6 @@ const submitWorkoutHandler = async (event) => {
     });
 
     if (response.ok) {
-        console.log('Successfully added workout!');
         document.location.replace(`/calendar/day/${date}`);
     } else {
         alert('Failed to add workout.');

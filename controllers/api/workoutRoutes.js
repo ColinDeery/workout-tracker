@@ -4,9 +4,7 @@ const withAuth = require('../../utils/withAuth');
 
 // At /api/workout/, add user's new workout for given date
 router.post('/', withAuth, async (req, res) => {
-    console.log('\nReached /api/workout/ \n');
     req.body.user_id = req.session.userId;
-    console.log(req.body);
     try {
         const workoutData = await Workout.create(req.body);
         res.status(200).json(workoutData);
@@ -38,9 +36,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 // At /api/workout/:id, update user's workout with same ID
-router.put('/:id', withAuth, async (req, res) => {
-    console.log('\n Reached /api/workout/:id');
-    
+router.put('/:id', withAuth, async (req, res) => {    
     try {
         const workoutData = await Workout.update(
             req.body,
@@ -65,7 +61,6 @@ router.put('/:id', withAuth, async (req, res) => {
 
 // At /api/workout/:date, return all of user's workouts for given date
 router.get('/:date', withAuth, async (req, res) => {
-    console.log('Reached /api/workout/:date');
     try {
         const workoutData = await Workout.findAll({
             where: {
@@ -83,7 +78,6 @@ router.get('/:date', withAuth, async (req, res) => {
 
 // At /api/workout/, return all of user's workouts (regardless of date)
 router.get('/', withAuth, async (req, res) => {
-    console.log('\nReached GET req at /api/workout/');
     try {
         const workoutData = await Workout.findAll({
             where: {

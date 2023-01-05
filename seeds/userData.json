@@ -1,9 +1,11 @@
 [
     {
+        "id": 1,
         "username": "PennStudent",
         "password": "Password1234"
     },
     {
+        "id": 2,
         "username": "DogLover",
         "password": "Password1234"
     }

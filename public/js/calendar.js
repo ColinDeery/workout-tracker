@@ -27,7 +27,6 @@ renderDayPreview();
 
 function clickDayHandler(event) {
     const date = event.target.closest('.calendar-day').id;
-    console.log(date);
 
     document.location.replace(`/calendar/day/${date}`);
 }
@@ -59,7 +58,6 @@ function createCalendar(year = INITIAL_YEAR, month = INITIAL_MONTH) {
     });
 
     // ADDED THIS
-    console.log('Created calendar');
     document.querySelectorAll('.calendar-day').forEach(element => element.addEventListener('click', clickDayHandler));
 }
 
@@ -86,7 +84,6 @@ function appendDay(day, calendarDaysElement) {
 // Render preview/indication of workouts scheduled for that day
 function renderDayPreview () {
     const dayElements = document.querySelectorAll('.calendar-day');
-    console.log(dayElements);
 
     const arrPromises = Array.from(dayElements, (day) => fetch(`/api/workout/${day.id}`));
     Promise.all(arrPromises)
@@ -95,7 +92,6 @@ function renderDayPreview () {
             return Promise.all(responsesJSON);
         })
         .then((data) => {
-            console.log(data);
             
             // Loop through each day on calendar
             for (let i = 0; i < data.length; i++) {

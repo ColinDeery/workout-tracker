@@ -247,6 +247,12 @@ li {
     height: var(--day-label-size);
 }
 
+.calendar-day:hover {
+    cursor: pointer;
+    /* background-color: rgb(163, 186, 203); */
+    border:rgb(111, 111, 190) solid 2px;
+}
+
 .calendar-day--not-current {
     background-color: var(--grey-100);
     color: var(--grey-300);

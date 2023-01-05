@@ -15,8 +15,8 @@
                         <label for="cardio-exercise">Exercise:</label>
                         <input type="text" id="cardio-exercise" value="{{workout.exercise}}">
 
-                        <label for="cardio-duration">Duration:</label>
-                        <input type="text" id="cardio-duration" value="{{workout.duration}}">
+                        <label for="cardio-duration">Duration (minutes): <span style="color:red">*</span></label>
+                        <input type="text" id="cardio-duration" value="{{workout.duration}}" required>
 
                         <label for="cardio-distance">Distance:</label>
                         <input type="text" id="cardio-distance" value="{{workout.distance}}">
@@ -30,8 +30,8 @@
                         <label for="strength-exercise">Exercise:</label>
                         <input type="text" id="strength-exercise" value="{{workout.exercise}}">
 
-                        <label for="strength-duration">Duration:</label>
-                        <input type="text" id="strength-duration" value="{{workout.duration}}">
+                        <label for="strength-duration">Duration (minutes): <span style="color:red">*</span></label>
+                        <input type="text" id="strength-duration" value="{{workout.duration}}" required>
 
                         <label for="sets">Sets:</label>
                         <input type="text" id="sets" value="{{workout.sets}}">
@@ -48,8 +48,8 @@
                 {{else if (ifEquals workout.category "Yoga/Pilates")}}
                 <section id="yoga">
                     <section class="d-flex flex-column">
-                        <label for="yoga-duration">Duration:</label>
-                        <input type="text" id="yoga-duration" value="{{workout.duration}}">
+                        <label for="yoga-duration">Duration (minutes): <span style="color:red">*</span></label>
+                        <input type="text" id="yoga-duration" value="{{workout.duration}}" required>
 
                         <label for="yoga-notes">Notes:</label>
                         <input type="text" id="yoga-notes" value="{{workout.notes}}">
@@ -60,8 +60,8 @@
                 {{else if (ifEquals workout.category "Recovery/Stretching")}}
                 <section id="recovery">
                     <section class="d-flex flex-column">
-                        <label for="recovery-duration">Duration:</label>
-                        <input type="text" id="recovery-duration" value="{{workout.duration}}">
+                        <label for="recovery-duration">Duration (minutes): <span style="color:red">*</span></label>
+                        <input type="text" id="recovery-duration" value="{{workout.duration}}" required>
 
                         <label for="recovery-notes">Notes:</label>
                         <input type="text" id="recovery-notes" value="{{workout.notes}}">
