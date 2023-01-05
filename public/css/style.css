@@ -156,10 +156,6 @@ select {
     margin-bottom: 10px;
 }
 
-.card {
-    /* border: solid 2px #0073FF; */
-}
-
 .card-header {
     background-color: #0073FF;
     color: white;
