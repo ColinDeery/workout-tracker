@@ -238,6 +238,7 @@ li {
     justify-content: space-evenly;
     background-color: #fff;
     padding: 10px;
+    flex-wrap: wrap;
 }
 
 #selected-month {
@@ -265,7 +266,7 @@ li {
     align-items: center;
     /* justify-content: space-between; */
     width: 80px;
-    margin-right: -21%;
+    margin-right: -16%;
 }
 
 .calendar-month-header-selectors>* {
@@ -393,12 +394,6 @@ li {
 
 .bi:hover {
     cursor: pointer;
-}
-
-@media screen and (max-width: 500px) {
-    canvas {
-        height: 80%;
-    }
 }
 
 @media screen and (max-width: 600px),
