@@ -48,6 +48,7 @@ const submitWorkoutHandler = async (event) => {
         requestBody.exercise = document.querySelector('#cardio-exercise').value;
         requestBody.duration = document.querySelector('#cardio-duration').value;
         requestBody.distance = document.querySelector('#cardio-distance').value;
+        requestBody.notes = document.querySelector('#cardio-notes').value;
     } else if (categoryChoice === 'Strength Training') {
         requestBody.exercise = document.querySelector('#strength-exercise').value;
         requestBody.duration = document.querySelector('#strength-duration').value;
@@ -60,10 +61,13 @@ const submitWorkoutHandler = async (event) => {
             requestBody.reps = null;
         }
         requestBody.weight = document.querySelector('#weight').value;
+        requestBody.notes = document.querySelector('#strength-notes').value;
     } else if (categoryChoice === 'Yoga/Pilates') {
+        requestBody.exercise = document.querySelector('#yoga-exercise').value;
         requestBody.duration = document.querySelector('#yoga-duration').value;
         requestBody.notes = document.querySelector('#yoga-notes').value;
     } else if (categoryChoice === 'Recovery/Stretching') {
+        requestBody.exercise = document.querySelector('#recovery-exercise').value;
         requestBody.duration = document.querySelector('#recovery-duration').value;
         requestBody.notes = document.querySelector('#recovery-notes').value;
     }

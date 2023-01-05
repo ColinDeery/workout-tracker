@@ -250,7 +250,7 @@ li {
 .calendar-day:hover {
     cursor: pointer;
     /* background-color: rgb(163, 186, 203); */
-    border:rgb(111, 111, 190) solid 2px;
+    border:rgb(0, 0, 0) solid 1px;
 }
 
 .calendar-day--not-current {

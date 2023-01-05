@@ -31,6 +31,9 @@
 
                         <label for="cardio-distance">Distance:</label>
                         <input type="text" id="cardio-distance">
+
+                        <label for="cardio-notes">Notes:</label>
+                        <input type="text" id="cardio-notes">
                     </section>
                 </section>
 
@@ -51,12 +54,18 @@
 
                         <label for="weight">Weight &#40;lbs&#41;:</label>
                         <input type="text" id="weight">
+
+                        <label for="strength-notes">Notes:</label>
+                        <input type="text" id="strength-notes">
                     </section>
                 </section>
 
                 {{!-- Yoga/Pilates Form --}}
                 <section id="yoga" style="display: none">
                     <section class="d-flex flex-column">
+                        <label for="yoga-exercise">Exercise/Pose:</label>
+                        <input type="text" id="yoga-exercise">
+
                         <label for="yoga-duration">Duration (minutes): <span style="color:red">*</span></label>
                         <input type="text" id="yoga-duration">
 
@@ -68,6 +77,9 @@
                 {{!-- Recovery/Stretching Form --}}
                 <section id="recovery" style="display: none">
                     <section class="d-flex flex-column">
+                        <label for="recovery-exercise">Exercise:</label>
+                        <input type="text" id="recovery-exercise">
+
                         <label for="recovery-duration">Duration (minutes): <span style="color:red">*</span></label>
                         <input type="text" id="recovery-duration">
 
