@@ -119,8 +119,6 @@ router.get('/calendar/day/:date/workout/:id', withAuth, async (req, res) => {
     try {
         const workoutData = await Workout.findByPk(req.params.id);
 
-        console.log(workoutData);
-
         const workout = workoutData.get({ plain: true });
         const loggedInUsername = await findUsername(req);
 

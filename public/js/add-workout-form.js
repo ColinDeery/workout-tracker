@@ -14,23 +14,32 @@ categoryEl.onchange = function () {
     yogaForm.style.display = 'none';
     recoveryForm.style.display = 'none';
 
+    // Disable required attribute initially
+    document.querySelector('#cardio-duration').required = false;
+    document.querySelector('#strength-duration').required = false;
+    document.querySelector('#yoga-duration').required = false;
+    document.querySelector('#recovery-duration').required = false;
+
     // Check which category user selected and display that corresponding form
     categoryChoice = categoryEl.options[categoryEl.selectedIndex].text;    
     if (categoryChoice === 'Cardio') {  
         cardioForm.style.display = 'block'; 
+        document.querySelector('#cardio-duration').required = true;
     } else if (categoryChoice === 'Strength Training') {
         strengthForm.style.display = 'block';
+        document.querySelector('#strength-duration').required = true;
     } else if (categoryChoice === 'Yoga/Pilates') {
         yogaForm.style.display = 'block';
+        document.querySelector('#yoga-duration').required = true;
     } else if (categoryChoice === 'Recovery/Stretching') {
         recoveryForm.style.display = 'block';
+        document.querySelector('#recovery-duration').required = true;
     }
 }
 
 // Create POST request to add workout info to planner
 const submitWorkoutHandler = async (event) => {
     event.preventDefault();
-    console.log('Complete button clicked');
 
     // Set the form input values in the appropriate keys on request body
     const requestBody = {};
@@ -39,8 +48,10 @@ const submitWorkoutHandler = async (event) => {
         requestBody.exercise = document.querySelector('#cardio-exercise').value;
         requestBody.duration = document.querySelector('#cardio-duration').value;
         requestBody.distance = document.querySelector('#cardio-distance').value;
+        requestBody.notes = document.querySelector('#cardio-notes').value;
     } else if (categoryChoice === 'Strength Training') {
         requestBody.exercise = document.querySelector('#strength-exercise').value;
+        requestBody.duration = document.querySelector('#strength-duration').value;
         requestBody.sets = document.querySelector('#sets').value;
         if (requestBody.sets === '') {
             requestBody.sets = null;
@@ -50,16 +61,18 @@ const submitWorkoutHandler = async (event) => {
             requestBody.reps = null;
         }
         requestBody.weight = document.querySelector('#weight').value;
+        requestBody.notes = document.querySelector('#strength-notes').value;
     } else if (categoryChoice === 'Yoga/Pilates') {
+        requestBody.exercise = document.querySelector('#yoga-exercise').value;
         requestBody.duration = document.querySelector('#yoga-duration').value;
         requestBody.notes = document.querySelector('#yoga-notes').value;
     } else if (categoryChoice === 'Recovery/Stretching') {
+        requestBody.exercise = document.querySelector('#recovery-exercise').value;
         requestBody.duration = document.querySelector('#recovery-duration').value;
         requestBody.notes = document.querySelector('#recovery-notes').value;
     }
 
     // Add current date to requestBody
-    console.log(document.location.href);
     const arrURL = document.location.href.split('/');
     const date = arrURL[arrURL.length - 2];
     requestBody.date = date;
@@ -71,7 +84,6 @@ const submitWorkoutHandler = async (event) => {
     });
 
     if (response.ok) {
-        console.log('Successfully added workout!');
         document.location.replace(`/calendar/day/${date}`);
     } else {
         alert('Failed to add workout.');

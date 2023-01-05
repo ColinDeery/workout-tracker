@@ -3,7 +3,6 @@ const { User } = require('../../models');
 
 // Login existing user
 router.post('/login', async (req, res) => {
-    console.log('\n Reached /api/users/login');
     try {
         // Find User with same username provided
         const dbUserData = await User.findOne({

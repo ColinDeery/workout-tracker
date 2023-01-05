@@ -11,8 +11,8 @@
 
                 {{!-- Select workout category --}}
                 <section class="d-flex flex-column">
-                    <label for="category">Select workout category:</label>
-                    <select name="category" id="category">
+                    <label for="category">Select workout category: <span style="color:red">*</span></label>
+                    <select name="category" id="category" required>
                         <option value="cardio">Cardio</option>
                         <option value="strength">Strength Training</option>
                         <option value="yoga">Yoga/Pilates</option>
@@ -26,11 +26,14 @@
                         <label for="cardio-exercise">Exercise:</label>
                         <input type="text" id="cardio-exercise">
 
-                        <label for="cardio-duration">Duration:</label>
-                        <input type="text" id="cardio-duration">
+                        <label for="cardio-duration">Duration (minutes): <span style="color:red">*</span></label>
+                        <input type="text" id="cardio-duration" required>
 
                         <label for="cardio-distance">Distance:</label>
                         <input type="text" id="cardio-distance">
+
+                        <label for="cardio-notes">Notes:</label>
+                        <input type="text" id="cardio-notes">
                     </section>
                 </section>
 
@@ -40,6 +43,9 @@
                         <label for="strength-exercise">Exercise:</label>
                         <input type="text" id="strength-exercise">
 
+                        <label for="strength-duration">Duration (minutes): <span style="color:red">*</span></label>
+                        <input type="text" id="strength-duration">
+
                         <label for="sets">Sets:</label>
                         <input type="text" id="sets">
 
@@ -48,13 +54,19 @@
 
                         <label for="weight">Weight &#40;lbs&#41;:</label>
                         <input type="text" id="weight">
+
+                        <label for="strength-notes">Notes:</label>
+                        <input type="text" id="strength-notes">
                     </section>
                 </section>
 
                 {{!-- Yoga/Pilates Form --}}
                 <section id="yoga" style="display: none">
                     <section class="d-flex flex-column">
-                        <label for="yoga-duration">Duration:</label>
+                        <label for="yoga-exercise">Exercise/Pose:</label>
+                        <input type="text" id="yoga-exercise">
+
+                        <label for="yoga-duration">Duration (minutes): <span style="color:red">*</span></label>
                         <input type="text" id="yoga-duration">
 
                         <label for="yoga-notes">Notes:</label>
@@ -65,7 +77,10 @@
                 {{!-- Recovery/Stretching Form --}}
                 <section id="recovery" style="display: none">
                     <section class="d-flex flex-column">
-                        <label for="recovery-duration">Duration:</label>
+                        <label for="recovery-exercise">Exercise:</label>
+                        <input type="text" id="recovery-exercise">
+
+                        <label for="recovery-duration">Duration (minutes): <span style="color:red">*</span></label>
                         <input type="text" id="recovery-duration">
 
                         <label for="recovery-notes">Notes:</label>
@@ -73,7 +88,7 @@
                     </section>
                 </section>
 
-                <button type="submit" class="btn btn-primary">Complete</button>
+                <button type="submit" class="btn btn-secondary">Complete</button>
 
             </form>
         </section>

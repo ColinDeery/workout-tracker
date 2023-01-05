@@ -1,3 +1,4 @@
+/* Styles across whole site */
 * {
     font-family: 'Hind', sans-serif;
     margin: 0;
@@ -32,11 +33,47 @@ nav li {
     font-size: 1.2rem;
 }
 
+nav a:hover {
+    color: black;
+}
+
 li a {
     color: white;
     text-decoration: none;
 }
 
+/* Login view styles */
+.login-body {
+    background-color: #8da0b9;
+}
+
+.inline {
+    max-width: 400px;
+    margin: auto;
+}
+
+.input-icons i {
+    position: absolute;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 3px;
+}
+
+/* Day view styles */
 .hide {
     display: none !important;
 }
@@ -50,54 +87,66 @@ li a {
 .day-header {
     background-color: #0073FF;
     padding: 1%;
-    /* border: solid black; */
+
 }
 
 .day-view-body {
     height: 100%;
     min-height: 100vh;
-    /* margin: 4%; */
     background-color: #8da0b9 !important;
     padding: 20px !important;
-    /* border: solid black; */
+}
+
+.day-view-cards-header h3 {
+    font-size: 1.2rem;
 }
 
 .workout-day-view-sections {
     height: fit-content;
-    /* border: black solid;
-    border-radius: 5px;
-    border-width: 1px; */
-    /* background-color: #fff; */
 }
 
 .todays-workout {
-    /* min-height: 80vh; */
     width: 50%;
     padding: 10px;
     display: inline-flex;
-    /* border: solid black; */
     background-color: #fff;
-    /* border-width: 1px; */
     margin-right: 5px;
     border-radius: 8px;
-    padding: 5px;
-    /* height: 100vh !important; */
+    box-shadow: 1px 1px 1px;
+    padding: 10px;
     height: -webkit-fill-available !important;
 }
+
+#present-month-selector {
+    font-size: 25px;
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+    text-align: right !important;
+    margin-right: -16%;
+}
+
+#present-month-selector:hover {
+    color: rgb(141, 1, 141);
+}
+
+#present-month-selector:active {
+    color: rgb(10, 0, 10);
+    font-size: 26px;
+}
+
 
 .previous-workout {
     min-height: 50vh;
     padding: 10px;
-    /* width: 48%; */
-    /* border: black;
-    border-style: none none solid solid;
-    border-width: 1px; */
     border-radius: 8px;
-    padding: 5px;
+    box-shadow: 1px 1px 1px;
+    padding: 10px;
     background-color: #fff;
     float: right;
     margin-left: 5px;
     margin-bottom: 5px;
+    height: fit-content;
 }
 
 #exercise-difficulty:first-letter {
@@ -110,12 +159,9 @@ li a {
 
 .exercises-info {
     min-height: 50vh;
-    /* width: 48%; */
-    /* border: black;
-    border-style: none none none solid;
-    border-width: 1px; */
     border-radius: 8px;
-    padding: 5px;
+    box-shadow: 1px 1px 1px;
+    padding: 10px;
     background-color: #fff;
     float: right;
     padding: 10px;
@@ -124,13 +170,6 @@ li a {
     margin-top: 5px;
 }
 
-/* Exersice info api submit button */
-/* .generate{
-    color:white;
-    background-color: #0452B3;
-    border: none;
-} */
-/* Exersice info api clear button */
 .clear {
     color: white;
     background-color: red;
@@ -181,16 +220,24 @@ li {
 }
 
 .calendar-month {
-    position: relative;
+    /* position: relative; */
     background-color: var(--grey-200);
     border: solid 1px var(--grey-200);
+    margin: 15px;
 }
+
 
 .calendar-month-header {
     display: flex;
-    justify-content: space-between;
+    text-align: left;
+    /* justify-content: center;  */
+    justify-content: space-evenly;
     background-color: #fff;
     padding: 10px;
+}
+
+#selected-month {
+    text-align: left;
 }
 
 .calendar-month-header-selected-month {
@@ -198,11 +245,23 @@ li {
     font-weight: 600;
 }
 
+#previous-month-selector>* {
+    display: flex;
+    cursor: pointer !important;
+}
+
+
+#next-month-selector>* {
+    display: flex;
+    cursor: pointer !important;
+}
+
 .calendar-month-header-selectors {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     width: 80px;
+    margin-right: -21%;
 }
 
 .calendar-month-header-selectors>* {
@@ -215,6 +274,10 @@ li {
     background-color: #fff;
     padding-bottom: 5px;
     padding-top: 10px;
+}
+
+.exercise-text {
+    font-size: 15px;
 }
 
 .day-of-week,
@@ -255,6 +318,12 @@ li {
     height: var(--day-label-size);
 }
 
+.calendar-day:hover {
+    cursor: pointer;
+    /* background-color: rgb(163, 186, 203); */
+    border: rgb(0, 0, 0) solid 1px;
+}
+
 .calendar-day--not-current {
     background-color: var(--grey-100);
     color: var(--grey-300);
@@ -262,6 +331,7 @@ li {
 
 .calendar-day--today {
     padding-top: 4px;
+    border: solid #0073FF 2px;
 }
 
 .calendar-day--today>span {
@@ -271,7 +341,6 @@ li {
 }
 
 .scrollable {
-    /* padding: 0% 10%; */
     position: relative;
     border: 1px solid gray;
     overflow: hidden;
@@ -291,8 +360,6 @@ li {
 .scrollable .content-wrapper {
     width: 100%;
     height: 100%;
-    /* padding-right: 50%; */
-    /* overflow-y: scroll; */
 }
 
 .scroller {
