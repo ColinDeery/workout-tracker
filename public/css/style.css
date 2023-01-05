@@ -394,13 +394,18 @@ li {
     cursor: pointer;
 }
 
+@media screen and (max-width: 500px) {
+    canvas {
+        height: 80%;
+    }
+}
 @media screen and (max-width: 600px) {
 
     .view-label {
         order: 2;
     }
 
-    .header-font {
+    #daily-workout-plan {
         order: 1;
     }
 
@@ -475,7 +480,7 @@ li {
         order: 2;
     }
 
-    .header-font {
+    #daily-workout-plan {
         order: 1;
     }
 
