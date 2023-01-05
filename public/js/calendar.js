@@ -80,11 +80,11 @@ function appendDay(day, calendarDaysElement) {
 
     if (day.date === TODAY) {
         dayElementClassList.add("calendar-day--today");
-    }  
+    }
 }
 
 // Render preview/indication of workouts scheduled for that day
-function renderDayPreview () {
+function renderDayPreview() {
     const dayElements = document.querySelectorAll('.calendar-day');
     console.log(dayElements);
 
@@ -96,7 +96,7 @@ function renderDayPreview () {
         })
         .then((data) => {
             console.log(data);
-            
+
             // Loop through each day on calendar
             for (let i = 0; i < data.length; i++) {
                 // If day has saved workouts
@@ -113,10 +113,10 @@ function renderDayPreview () {
                     // If all workouts for that day are completed, render green checkmark
                     if (dayCompleted) {
                         const completedIcon = document.createElement('i');
-                        completedIcon.setAttribute('class', 'bi bi-check-circle-fill align-self-center');
+                        completedIcon.setAttribute('class', 'bi bi-check-circle-fill calendar-check align-self-center');
                         completedIcon.setAttribute('style', 'font-size: 3.5rem; color: green');
                         dayElements[i].appendChild(completedIcon);
-                    // Otherwise, change color of day element and render number of exercises/workouts for that day
+                        // Otherwise, change color of day element and render number of exercises/workouts for that day
                     } else {
                         const numWorkouts = document.createElement('h5');
                         numWorkouts.textContent = `Exercise(s): ${workoutsForDay.length}`;

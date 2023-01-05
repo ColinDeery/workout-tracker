@@ -1,6 +1,15 @@
 * {
     font-family: 'Hind', sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
 }
 
 .header-font {
@@ -16,6 +25,7 @@
 nav {
     text-align: right;
 }
+
 nav li {
     list-style: none;
     display: inline;
@@ -52,7 +62,7 @@ li a {
     /* border: solid black; */
 }
 
-.workout-day-view-sections{
+.workout-day-view-sections {
     height: fit-content;
     /* border: black solid;
     border-radius: 5px;
@@ -63,7 +73,7 @@ li a {
 .todays-workout {
     /* min-height: 80vh; */
     width: 50%;
-    padding:10px;
+    padding: 10px;
     display: inline-flex;
     /* border: solid black; */
     background-color: #fff;
@@ -77,7 +87,7 @@ li a {
 
 .previous-workout {
     min-height: 50vh;
-    padding:10px;
+    padding: 10px;
     /* width: 48%; */
     /* border: black;
     border-style: none none solid solid;
@@ -108,11 +118,12 @@ li a {
     padding: 5px;
     background-color: #fff;
     float: right;
-    padding:10px;
+    padding: 10px;
     height: -webkit-fill-available;
     margin-left: 5px;
     margin-top: 5px;
 }
+
 /* Exersice info api submit button */
 /* .generate{
     color:white;
@@ -120,8 +131,8 @@ li a {
     border: none;
 } */
 /* Exersice info api clear button */
-.clear{
-    color:white;
+.clear {
+    color: white;
     background-color: red;
     border: none;
 }
@@ -140,7 +151,8 @@ li a {
     text-align: center;
 }
 
-input, select {
+input,
+select {
     margin-bottom: 10px;
 }
 
@@ -286,6 +298,7 @@ li {
     /* padding-right: 50%; */
     /* overflow-y: scroll; */
 }
+
 .scroller {
     z-index: 5;
     cursor: pointer;
@@ -301,6 +314,7 @@ li {
     -o-transition: top .08s;
     transition: top .08s;
 }
+
 .content {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -308,4 +322,153 @@ li {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+@media screen and (max-width: 600px) {
+
+    .view-label {
+        order: 2;
+    }
+
+    .header-font {
+        order: 1;
+    }
+
+    nav {
+        order: 3;
+    }
+
+    .col-4 {
+        width: 90%;
+    }
+
+    .mt-5 {
+        width: 90%;
+        text-align: center;
+    }
+
+    .header-font {
+        text-align: center;
+    }
+
+    .workout-day-view-sections {
+        display: flex;
+        display: block;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .todays-workout.scrollable {
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+
+    .previous-workout {
+        margin-left: 0px;
+        margin-top: 5px;
+    }
+
+    .exercises-info {
+        margin-left: 0px;
+    }
+
+    .col-6 {
+        width: 100%;
+    }
+
+    .day-header {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav>ul {
+        text-align: center;
+        padding-inline-start: 0px;
+    }
+
+    .calendar-check {
+        display: none
+    }
+
+    .exercise-text {
+        display: none;
+    }
+
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    .view-label {
+        order: 2;
+    }
+
+    .header-font {
+        order: 1;
+    }
+
+    nav {
+        order: 3;
+    }
+
+    .col-4 {
+        width: 90%;
+    }
+
+    .mt-5 {
+        width: 90%;
+        text-align: center;
+    }
+
+    .header-font {
+        text-align: center;
+    }
+
+    .workout-day-view-sections {
+        display: flex;
+        display: block;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .todays-workout.scrollable {
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+
+    .previous-workout {
+        margin-left: 0px;
+        margin-top: 5px;
+    }
+
+    .exercises-info {
+        margin-left: 0px;
+    }
+
+    .col-6 {
+        width: 100%;
+    }
+
+    .day-header {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav>ul {
+        text-align: center;
+        padding-inline-start: 0px;
+
+    }
+
+    .calendar-check {
+        display: none
+    }
+
+    .exercise-text {
+        display: none;
+    }
 }
