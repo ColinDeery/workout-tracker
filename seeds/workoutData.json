@@ -2,7 +2,7 @@
     {
         "category": "Cardio",
         "exercise": "Burpee",
-        "duration": "30 minutes",
+        "duration": "30",
         "sets": "3",
         "reps": "10",
         "notes": "Don't fail.",
@@ -13,7 +13,7 @@
     {
         "category": "Strength Training",
         "exercise": "Landmine twist",
-        "duration": "45 minutes",
+        "duration": "45",
         "sets": "4",
         "reps": "10",
         "notes": "You're doing a great job!",
