@@ -110,6 +110,25 @@ li a {
     height: -webkit-fill-available !important;
 }
 
+#present-month-selector{
+    font-size: 25px;
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+    text-align:right !important; 
+    margin-right: -16%;
+}
+
+#present-month-selector:hover {
+    color: rgb(141, 1, 141);
+  }
+  
+  #present-month-selector:active {
+    color: rgb(10, 0, 10);
+    font-size: 26px;
+  }
+  
+
 .previous-workout {
     min-height: 50vh;
     padding:10px;
@@ -192,16 +211,24 @@ li {
 }
 
 .calendar-month {
-    position: relative;
+    /* position: relative; */
     background-color: var(--grey-200);
     border: solid 1px var(--grey-200);
+    margin: 15px;
 }
+
 
 .calendar-month-header {
     display: flex;
-    justify-content: space-between;
+    text-align: left;
+    /* justify-content: center;  */
+    justify-content: space-evenly;
     background-color: #fff;
     padding: 10px;
+}
+
+#selected-month{
+    text-align: left;
 }
 
 .calendar-month-header-selected-month {
@@ -209,11 +236,23 @@ li {
     font-weight: 600;
 }
 
+#previous-month-selector>*{
+    display: flex;
+    cursor: pointer !important;
+}
+
+
+#next-month-selector>*{
+    display: flex;
+    cursor: pointer !important;
+}
+
 .calendar-month-header-selectors {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     width: 80px;
+    margin-right: -21%;
 }
 
 .calendar-month-header-selectors>* {
