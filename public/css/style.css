@@ -13,6 +13,9 @@ body {
     min-height: 100%;
 }
 
+main {
+    min-height: 100%;
+}
 .header-font {
     font-family: 'Mulish', sans-serif;
 }
@@ -43,7 +46,7 @@ li a {
 }
 
 /* Login view styles */
-.login-body {
+body {
     background-color: #8da0b9;
 }
 
@@ -387,13 +390,22 @@ li {
     user-select: none;
 }
 
+.bi:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+    canvas {
+        height: 80%;
+    }
+}
 @media screen and (max-width: 600px) {
 
     .view-label {
         order: 2;
     }
 
-    .header-font {
+    #daily-workout-plan {
         order: 1;
     }
 
@@ -468,7 +480,7 @@ li {
         order: 2;
     }
 
-    .header-font {
+    #daily-workout-plan {
         order: 1;
     }
 

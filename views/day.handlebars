@@ -1,7 +1,7 @@
 <section class="day-view-card">
     <section class="day-header d-flex justify-content-between">
         <h2 class="view-label">{{format_date date}}</h2>
-        <h2 class="header-font">Daily Workout Plan <i class="fa-solid fa-person-running"></i></h2>
+        <h2 class="header-font" id="daily-workout-plan">Daily Workout Plan <i class="fa-solid fa-person-running"></i></h2>
         <nav>
             <ul class="d-flex flex-column">
                 <li> <a href="/calendar">Monthly View</a> </li>
@@ -38,17 +38,18 @@
 
             <section class="d-flex flex-column col-6">
                 <article class="previous-workout d-flex flex-column">
-                    <h5>Previous Workouts:</h5>
+                    <section class="day-view-cards-header">
+                        <h3>Previous Workouts</h3>
+                    </section>
                     <canvas id="myChart" style="width:100%; max-width:800px; margin:0 auto;"></canvas>
 
                 </article>
 
                 <article class="exercises-info d-flex flex-column">
                     <section class="day-view-cards-header">
-                        <h3>Workout Suggestions</h3>
+                        <h3><i>Need a workout idea?</i></h3>
                     </section>
                     <form id="suggested-workout-options">
-                        <h5><i>Need a workout idea?</i></h5>
                         <label for="type">Select workout type:</label>
                         <select name="type" id="type">
                             <option value="cardio">Cardio</option>
