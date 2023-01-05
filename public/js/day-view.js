@@ -228,62 +228,6 @@ const format_date = (date) => {
 
     return dateObj.toLocaleString("en-US", options);
 }
-// Fetch previous workouts
-function fetchPreviousWorkout() {
-
-    fetch(`/api/workout`)
-        .then((response) => {
-
-            return response.json();
-        }).then((data) => {
-            console.log(data);
-            const sortedWorkouts = data.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
-            console.log(sortedWorkouts);
-
-            let prevCompletedWorkout = []
-
-            for (let i = 0; i < sortedWorkouts.length; i++) {
-                if (sortedWorkouts[i].completed) {
-                    console.log(sortedWorkouts[i]);
-                    prevCompletedWorkout.push(sortedWorkouts[i])
-                }
-            }
-
-            if (prevCompletedWorkout.length > 1) {
-                JSC.Chart('chartDiv', {
-                    type: 'horizontal column',
-                    series: [
-                        {
-                            points: [
-                                { x: `${prevCompletedWorkout[0].category} ${format_date(prevCompletedWorkout[0].date)}`,
-                                  y: parseInt(prevCompletedWorkout[0].duration) },
-                                { x: `${prevCompletedWorkout[1].category} ${format_date(prevCompletedWorkout[1].date)}`, 
-                                  y: parseInt(prevCompletedWorkout[1].duration) },
-                            ]
-                        }
-                    ]
-                });
-            } if (prevCompletedWorkout.length == 1) {
-                JSC.Chart('chartDiv', {
-                    type: 'horizontal column',
-                    series: [
-                        {
-                            points: [
-                                { x: `${prevCompletedWorkout[0].category} ${format_date(prevCompletedWorkout[0].date)}`, y: 50 },
-                            ]
-                        }
-                    ]
-                });
-            } 
-            if (prevCompletedWorkout.length < 1) {
-                const noPrevWorkoutsAlert = document.createElement("h3");
-                noPrevWorkoutsAlert.textContent = "No Prior Workouts Found";
-                previousWorkoutSection.append(noPrevWorkoutsAlert);
-            }
-        });
-}
-
-// fetchPreviousWorkout();
 
 async function fetchPastWeek() {
     const xValues = []; // dates
@@ -341,7 +285,10 @@ async function fetchPastWeek() {
 
             scales: {
                 xAxes: [{
-                    ticks: { min: 0 },
+                    ticks: { 
+                        min: 0,
+                        fontSize: 15
+                    },
                     scaleLabel: {
                         display: true,
                         labelString: 'Duration (minutes)',
@@ -349,6 +296,9 @@ async function fetchPastWeek() {
                     }
                 }],
                 yAxes: [{
+                    ticks: { 
+                        fontSize: 15
+                    },
                     scaleLabel: {
                         display: true,
                         labelString: 'Dates',

@@ -1,6 +1,15 @@
 * {
     font-family: 'Hind', sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
 }
 
 .header-font {
@@ -20,6 +29,10 @@ nav li {
     list-style: none;
     display: inline;
     font-size: 1.2rem;
+}
+
+nav a:hover {
+    color: black;
 }
 
 li a {
@@ -88,6 +101,7 @@ li a {
     float: right;
     margin-left: 5px;
     margin-bottom: 5px;
+    height: fit-content;
 }
 
 #exercise-difficulty:first-letter {
@@ -315,4 +329,33 @@ li {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.inline{
+    max-width:400px;
+    margin:auto;
+}
+.input-icons i {
+    position: absolute;
+}
+  
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+  
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
+  
+.input-field {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 3px;
+}
+
+.bi {
+    cursor: pointer;
 }

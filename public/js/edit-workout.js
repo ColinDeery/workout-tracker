@@ -71,7 +71,7 @@ const toggleToIncomplete = async (event) => {
     }
 }
 
-document.querySelectorAll('.bi-x-square-fill').forEach(element => element.addEventListener('click', delWorkoutHandler));
+document.querySelectorAll('.bi-x-square').forEach(element => element.addEventListener('click', delWorkoutHandler));
 document.querySelectorAll('.bi-pencil-square').forEach(element => element.addEventListener('click', editWorkoutHandler));
 // Clicked on green checkmark icon
 document.querySelectorAll('.complete').forEach(element => element.addEventListener('click', toggleToIncomplete));
