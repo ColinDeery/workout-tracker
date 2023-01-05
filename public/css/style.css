@@ -16,6 +16,7 @@ body {
 main {
     min-height: 100%;
 }
+
 .header-font {
     font-family: 'Mulish', sans-serif;
 }
@@ -399,7 +400,9 @@ li {
         height: 80%;
     }
 }
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 600px),
+(max-width:1100px) {
 
     .view-label {
         order: 2;
@@ -472,78 +475,4 @@ li {
     }
 
 
-}
-
-@media screen and (max-width: 1000px) {
-
-    .view-label {
-        order: 2;
-    }
-
-    #daily-workout-plan {
-        order: 1;
-    }
-
-    nav {
-        order: 3;
-    }
-
-    .col-4 {
-        width: 90%;
-    }
-
-    .mt-5 {
-        width: 90%;
-        text-align: center;
-    }
-
-    .header-font {
-        text-align: center;
-    }
-
-    .workout-day-view-sections {
-        display: flex;
-        display: block;
-        flex-direction: column;
-        flex-wrap: wrap;
-    }
-
-    .todays-workout.scrollable {
-        width: 100%;
-        margin-right: 0px;
-        margin-bottom: 5px;
-    }
-
-    .previous-workout {
-        margin-left: 0px;
-        margin-top: 5px;
-    }
-
-    .exercises-info {
-        margin-left: 0px;
-    }
-
-    .col-6 {
-        width: 100%;
-    }
-
-    .day-header {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav>ul {
-        text-align: center;
-        padding-inline-start: 0px;
-
-    }
-
-    .calendar-check {
-        display: none
-    }
-
-    .exercise-text {
-        display: none;
-    }
 }
