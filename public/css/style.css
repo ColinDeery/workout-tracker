@@ -13,15 +13,9 @@ body {
     min-height: 100%;
 }
 
-
-
-html {
-    height: 100%;
-}
-body {
+main {
     min-height: 100%;
 }
-
 .header-font {
     font-family: 'Mulish', sans-serif;
 }
@@ -51,7 +45,7 @@ li a {
 }
 
 /* Login view styles */
-.login-body {
+body {
     background-color: #8da0b9;
 }
 
@@ -389,4 +383,8 @@ li {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.bi:hover {
+    cursor: pointer;
 }

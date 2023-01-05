@@ -38,17 +38,18 @@
 
             <section class="d-flex flex-column col-6">
                 <article class="previous-workout d-flex flex-column">
-                    <h5>Previous Workouts:</h5>
+                    <section class="day-view-cards-header">
+                        <h3>Previous Workouts</h3>
+                    </section>
                     <canvas id="myChart" style="width:100%; max-width:800px; margin:0 auto;"></canvas>
 
                 </article>
 
                 <article class="exercises-info d-flex flex-column">
                     <section class="day-view-cards-header">
-                        <h3>Workout Suggestions</h3>
+                        <h3><i>Need a workout idea?</i></h3>
                     </section>
                     <form id="suggested-workout-options">
-                        <h5><i>Need a workout idea?</i></h5>
                         <label for="type">Select workout type:</label>
                         <select name="type" id="type">
                             <option value="cardio">Cardio</option>

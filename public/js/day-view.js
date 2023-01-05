@@ -17,8 +17,6 @@ dayjs.extend(window.dayjs_plugin_weekOfYear);
 
 const arrURL = document.location.href.split('/');
 const currentDate = arrURL[5];
-console.log('Current Date: ' + currentDate);
-
 
 //Submit button logic to select workout type and call api
 submitBtnEl.addEventListener("click", function (event) {
@@ -42,12 +40,10 @@ function fetchApi() {
             'X-Api-Key': '5P6QO7VJRqnquUEJr7susQ==jNfogauqhz6Oe2kU'
         },
     }).then(response => {
-        console.log(response)
         if (response.ok) {
             return response.json()
         }
     }).then(data => {
-        console.log(data)
         createExercises(data)
     }).catch(error => {
         console.log(error)
@@ -56,7 +52,6 @@ function fetchApi() {
 
 //Function with data array and apend logic
 const createExercises = function (data) {
-    console.log(data);
     const exerciseData = [
         {
             name: data[0].name,
@@ -244,7 +239,6 @@ async function fetchPastWeek() {
         // Fetch user's workouts for the inputted date (data = array of workouts)
         const response = await fetch(`/api/workout/${previousDayFormatted}`);
         const data = await response.json();
-        console.log(data);
     
         // Sum up total duration of all completed workouts for this day
         let totalDurationDay = 0;
@@ -253,7 +247,6 @@ async function fetchPastWeek() {
                 totalDurationDay = totalDurationDay + data[i].duration;
             }
         }
-        console.log(`${previousDayFormatted}: ${totalDurationDay}`);
 
         xValues.push(dayjs(`${previousDayFormatted}`).format('M/D/YYYY'));
         yValues.push(totalDurationDay);
