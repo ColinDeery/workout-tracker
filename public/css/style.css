@@ -3,10 +3,41 @@
 
 }
 
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+}
+
 .login-body {
     background-color: #8da0b9;
 }
 
+.inline{
+    max-width:400px;
+    margin:auto;
+}
+.input-icons i {
+    position: absolute;
+}
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
+.input-field {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 3px;
+}
+/* #form-card {
+    
+} */
 .header-font {
     font-family: 'Mulish', sans-serif;
 }
