@@ -13,7 +13,8 @@ Workout Tracker is a web app to help schedule and track workouts in order to mee
 <br>- [license](#license)
 
 ## Usage
-Heroku Link: https://floating-reaches-44287.herokuapp.com/
+Heroku Link: https://rocky-woodland-73548.herokuapp.com/login
+
 
 Screenshot: 
 ![link](./assets/image.png)
