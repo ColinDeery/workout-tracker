@@ -11,6 +11,15 @@
         "user_id": 2
     },
     {
+        "category": "Cardio",
+        "exercise": "Jogging",
+        "duration": 5,
+        "notes": "Warm up!",
+        "date": "2023-01-02",
+        "completed": true,
+        "user_id": 1
+    },
+    {
         "category": "Strength Training",
         "exercise": "Bicep Curl",
         "duration": 10,
@@ -60,9 +69,9 @@
         "category": "Strength Training",
         "exercise": "Dumbell Chest Press",
         "duration": 10,
-        "sets": 3,
-        "reps": 10,
-        "weight": "20 (each hand)",
+        "sets": 4,
+        "reps": 8,
+        "weight": "25 (each hand)",
         "date": "2023-01-03",
         "completed": true,
         "user_id": 1
@@ -74,7 +83,7 @@
         "notes": "Keep elbows tucked in and steady.",
         "sets": 3,
         "reps": 10,
-        "weight": "20 (each hand)",
+        "weight": "20",
         "date": "2023-01-03",
         "completed": true,
         "user_id": 1
@@ -93,8 +102,8 @@
     {
         "category": "Strength Training",
         "exercise": "Pushups",
-        "duration": 10,
-        "notes": "You want 90 deg bend in elbows.",
+        "duration": 8,
+        "notes": "Make sure 90 deg bend in elbows!",
         "sets": 4,
         "reps": 8,
         "date": "2023-01-03",
@@ -106,16 +115,77 @@
         "exercise": "Jogging",
         "duration": 20,
         "distance": "2 miles",
-        "notes": "Remember to breathe!",
+        "notes": "Remember to breathe! Don't stiffen upper body.",
         "date": "2023-01-04",
         "completed": true,
         "user_id": 1
     },
     {
         "category": "Yoga/Pilates",
-        "duration": 20,
-        "notes": "Follow YouTube ab workout.",
+        "duration": 10,
+        "notes": "Follow ab workout video on YouTube.",
         "date": "2023-01-04",
+        "completed": true,
+        "user_id": 1
+    },
+    {
+        "category": "Cardio",
+        "exercise": "Running",
+        "duration": 10,
+        "distance": "1 mile",
+        "date": "2023-01-05",
+        "completed": true,
+        "user_id": 1
+    },
+    {
+        "category": "Strength Training",
+        "exercise": "Barbell Squats",
+        "duration": 12,
+        "sets": 3,
+        "reps": 12,
+        "weight": "80",
+        "notes": "Push with heels. Don't round your back.",
+        "date": "2023-01-05",
+        "completed": true,
+        "user_id": 1
+    },
+    {
+        "category": "Strength Training",
+        "exercise": "Deadlifts",
+        "duration": 10,
+        "sets": 3,
+        "reps": 12,
+        "weight": "100",
+        "notes": "Keep neutral spine.",
+        "date": "2023-01-05",
+        "completed": true,
+        "user_id": 1
+    },
+    {
+        "category": "Strength Training",
+        "exercise": "Bulgarian Split Squats",
+        "duration": 8,
+        "sets": 3,
+        "reps": 12,
+        "weight": "15 (each hand)",
+        "date": "2023-01-05",
+        "completed": true,
+        "user_id": 1
+    },
+    {
+        "category": "Yoga/Pilates",
+        "exercise": "Glute Bridge",
+        "duration": 12,
+        "notes": "Use resistance bands.",
+        "date": "2023-01-05",
+        "completed": true,
+        "user_id": 1
+    },
+    {
+        "category": "Recovery/Stretching",
+        "exercise": "Quad & Hamstring Stretches",
+        "duration": 5,
+        "date": "2023-01-05",
         "completed": true,
         "user_id": 1
     }
