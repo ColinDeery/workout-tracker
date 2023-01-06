@@ -13,14 +13,14 @@
     </section>
 
     <section class="card-body rounded-0 d-flex flex-row justify-content-between">
-        <ul>
+        <ul id="info-list">
             {{!-- If property not null, then display info on card --}}
             {{#if workout.type}}
             <li>Type: {{workout.type}}</li>
             {{/if}}
 
             {{#if workout.duration}}
-            <li>Duration (minutes): {{workout.duration}}</li>
+            <li>Duration (min): {{workout.duration}}</li>
             {{/if}}
             
             {{#if workout.distance}}

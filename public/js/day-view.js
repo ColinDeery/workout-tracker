@@ -257,9 +257,17 @@ async function fetchPastWeek() {
         previousDay = dayjs(`${previousDayFormatted}`).subtract(1, "date");
     }
 
+    let chartXLabel = 'Duration (minutes)';
+    let chartXLabelColor = null;
+    // If there are no completed workouts for past week, display reminder to get moving under chart
+    if (totalDurationWeek === 0) {
+        chartXLabel = 'Reminder to get moving!';
+        chartXLabelColor = 'red';
+    }
+
     // Render bar chart showing total workout duration/day in past week
-    Chart.defaults.global.title.fontSize = 20;
-    Chart.defaults.global.legend.fontSize = 20;
+    Chart.defaults.global.title.fontSize = 18;
+    Chart.defaults.global.legend.fontSize = 18;
     new Chart("myChart", {
         type: "horizontalBar",
         data: {
@@ -270,6 +278,8 @@ async function fetchPastWeek() {
             }]
         },
         options: {
+            maintainAspectRatio: false,
+            aspectRatio: 1,
             title: {
                 display: true,
                 text: "Total Workout Duration Per Day In Past Week"
@@ -284,8 +294,9 @@ async function fetchPastWeek() {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: 'Duration (minutes)',
-                        fontSize: 20
+                        labelString: chartXLabel,
+                        fontColor: chartXLabelColor,
+                        fontSize: 18
                     }
                 }],
                 yAxes: [{
@@ -295,20 +306,12 @@ async function fetchPastWeek() {
                     scaleLabel: {
                         display: true,
                         labelString: 'Dates',
-                        fontSize: 20
+                        fontSize: 18
                     }
                 }]
             }
         }
     });
-
-    // If there are no completed workouts for past week, display reminder to get moving under chart
-    if (totalDurationWeek === 0) {
-        const idleWarning = document.createElement('h3');
-        idleWarning.classList.add('align-self-center','mt-3');
-        idleWarning.innerHTML = '<i style="color: red">Reminder to get moving!<i>';
-        previousWorkoutSection.appendChild(idleWarning);
-    }
 }
 
 fetchPastWeek();

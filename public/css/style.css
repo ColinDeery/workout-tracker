@@ -396,11 +396,18 @@ li {
     cursor: pointer;
 }
 
+@media screen and (max-width: 600px) {
+    #info-list {
+        padding: 0;
+    }
+}
+
 @media screen and (max-width: 600px),
 (max-width:1100px) {
 
     .view-label {
         order: 2;
+        text-align: center;
     }
 
     #daily-workout-plan {
